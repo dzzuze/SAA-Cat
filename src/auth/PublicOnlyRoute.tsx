@@ -13,7 +13,7 @@ export default function PublicOnlyRoute({
   // Wait until Firebase restores auth state
   if (loading) {
     return (
-      <div >
+      <div>
         <p>Checking authentication...</p>
       </div>
     );

@@ -6,4 +6,6 @@ export type AuthContextValue = {
   loading: boolean;
 };
 
-export const AuthContext = createContext<AuthContextValue | undefined>(undefined);
+export const AuthContext = createContext<AuthContextValue | undefined>(
+  undefined,
+);
