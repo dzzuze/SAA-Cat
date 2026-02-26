@@ -16,11 +16,10 @@ import AboutUsPage from "../pages/AboutUsPage";
 import NotFound from "../pages/NotFound";
 
 const router = createBrowserRouter([
-  // PUBLIC
+
   { path: "/", element: <MainPage /> },
   { path: "/about", element: <AboutUsPage /> },
 
-  // GUEST ONLY (if logged in -> redirect to /dashboard)
   {
     element: <PublicOnlyRoute redirectTo="/dashboard" />,
     children: [
@@ -29,7 +28,6 @@ const router = createBrowserRouter([
     ],
   },
 
-  // PROTECTED (only logged-in users)
   {
     element: <ProtectedRoute />,
     children: [
@@ -38,7 +36,6 @@ const router = createBrowserRouter([
     ],
   },
 
-  // 404
   { path: "/404", element: <NotFound /> },
   { path: "*", element: <Navigate to="/404" replace /> },
 ]);

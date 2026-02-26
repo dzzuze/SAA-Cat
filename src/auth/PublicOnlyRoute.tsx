@@ -10,7 +10,6 @@ export default function PublicOnlyRoute({
 }: PublicOnlyRouteProps) {
   const { user, loading } = useAuth();
 
-  // Wait until Firebase restores auth state
   if (loading) {
     return (
       <div>
@@ -19,11 +18,9 @@ export default function PublicOnlyRoute({
     );
   }
 
-  // If user is logged in -> redirect away
   if (user) {
     return <Navigate to={redirectTo} replace />;
   }
 
-  // Otherwise allow access
   return <Outlet />;
 }
