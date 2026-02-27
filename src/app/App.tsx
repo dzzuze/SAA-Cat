@@ -5,8 +5,7 @@ export default function App() {
   return (
     <div>
       <LoginPage />
-      <AppRouter />;
-    </div>
-    
+      <AppRouter />
+    </div>   
   );
 }
