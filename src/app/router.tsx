@@ -16,7 +16,6 @@ import AboutUsPage from "../pages/AboutUsPage";
 import NotFound from "../pages/NotFound";
 
 const router = createBrowserRouter([
-
   { path: "/", element: <MainPage /> },
   { path: "/about", element: <AboutUsPage /> },
 
