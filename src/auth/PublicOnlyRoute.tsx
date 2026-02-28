@@ -12,9 +12,11 @@ export default function PublicOnlyRoute({
 
   if (loading) {
     return (
-      <div>
-        <p>Checking authentication...</p>
-      </div>
+  <div className="flex min-h-screen items-center justify-center">
+        <p className="text-sm text-gray-500">
+          Checking authentication...
+        </p>
+  </div>
     );
   }
 
