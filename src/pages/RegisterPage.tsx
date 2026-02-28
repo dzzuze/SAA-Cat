@@ -37,7 +37,7 @@ export default function RegisterPage() {
           </div>
           <div>
             <label className="mb-1 block text-sm font-medium text-zinc-400">
-              Пароль
+              Повторите пароль
             </label>
             <input
               type="password"
