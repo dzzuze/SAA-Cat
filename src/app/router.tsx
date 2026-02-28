@@ -18,27 +18,27 @@ const router = createBrowserRouter([
   {
     element: <RootLayout />,
     children: [
-  { path: "/", element: <MainPage /> },
-  { path: "/about", element: <AboutUsPage /> },
+      { path: "/", element: <MainPage /> },
+      { path: "/about", element: <AboutUsPage /> },
 
-  {
-    element: <AuthGateLayout />,
-    children: [
-      { path: "/login", element: <LoginPage /> },
-      { path: "/register", element: <RegisterPage /> },
-    ],
-  },
+      {
+        element: <AuthGateLayout />,
+        children: [
+          { path: "/login", element: <LoginPage /> },
+          { path: "/register", element: <RegisterPage /> },
+        ],
+      },
 
-  {
-    element: <ProtectedLayout />,
-    children: [
-      { path: "/user", element: <UserPage /> },
-      { path: "/dashboard", element: <Dashboard /> },
-    ],
-  },
+      {
+        element: <ProtectedLayout />,
+        children: [
+          { path: "/user", element: <UserPage /> },
+          { path: "/dashboard", element: <Dashboard /> },
+        ],
+      },
 
-  { path: "/404", element: <NotFound /> },
-  { path: "*", element: <Navigate to="/404" replace /> },
+      { path: "/404", element: <NotFound /> },
+      { path: "*", element: <Navigate to="/404" replace /> },
     ],
   },
 ]);

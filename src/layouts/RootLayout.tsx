@@ -5,7 +5,7 @@ export default function RootLayout() {
     <div className="root-min-h-screen flex flex-col items-center justify-center">
       <main className="flex-1">
         <Outlet />
-        </main>
+      </main>
     </div>
   );
 }
