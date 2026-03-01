@@ -16,6 +16,7 @@ import ProtectedLayout from "../layouts/ProtectedLayout";
 
 const router = createBrowserRouter([
   {
+    path: "/",
     element: <RootLayout />,
     children: [
       { path: "/", element: <MainPage /> },
