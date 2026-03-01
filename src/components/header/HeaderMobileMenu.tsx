@@ -8,7 +8,12 @@ type Props = {
   extraLinks?: HeaderLink[];
 };
 
-export default function HeaderMobileMenu({ isOpen, onClose, links, extraLinks }: Props) {
+export default function HeaderMobileMenu({
+  isOpen,
+  onClose,
+  links,
+  extraLinks,
+}: Props) {
   if (!isOpen) return null;
 
   const merged = extraLinks ? [...links, ...extraLinks] : links;

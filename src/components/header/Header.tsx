@@ -33,7 +33,8 @@ export default function Header() {
   useEffect(() => {
     const onPointerDown = (e: PointerEvent) => {
       if (!userMenuRef.current) return;
-      if (!userMenuRef.current.contains(e.target as Node)) setIsUserMenuOpen(false);
+      if (!userMenuRef.current.contains(e.target as Node))
+        setIsUserMenuOpen(false);
     };
 
     const onKeyDown = (e: KeyboardEvent) => {
@@ -88,7 +89,12 @@ export default function Header() {
               viewBox="0 0 24 24"
               fill="none"
             >
-              <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M5 7h14M5 12h14M5 17h14" />
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeWidth="2"
+                d="M5 7h14M5 12h14M5 17h14"
+              />
             </svg>
           </button>
         </div>
@@ -101,7 +107,10 @@ export default function Header() {
         </div>
       </div>
 
-      <WatchingCat className="absolute bottom-0 right-6 hidden h-18 w-18 md:block" aria-hidden />
+      <WatchingCat
+        className="absolute bottom-0 right-6 hidden h-18 w-18 md:block"
+        aria-hidden
+      />
 
       <HeaderMobileMenu
         isOpen={isMenuOpen}

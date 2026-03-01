@@ -33,7 +33,13 @@ export default function CatIcon({ className = "", title = "Cat icon" }: Props) {
       <path d="M54 42 L42 40" />
 
       {/* Default styling via currentColor */}
-      <g fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
       <g fill="currentColor" />
     </svg>
   );

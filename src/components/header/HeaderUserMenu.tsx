@@ -37,8 +37,12 @@ export default function HeaderUserMenu({
           className="absolute right-0 mt-2 w-48 overflow-hidden rounded-lg border bg-white shadow-lg"
         >
           <div className="border-b px-4 py-3 text-sm">
-            <span className="block font-medium">{user.displayName || "Cat Lover"}</span>
-            <span className="block truncate text-xs text-gray-500">{user.email}</span>
+            <span className="block font-medium">
+              {user.displayName || "Cat Lover"}
+            </span>
+            <span className="block truncate text-xs text-gray-500">
+              {user.email}
+            </span>
           </div>
 
           <ul className="p-2 text-sm font-medium text-gray-800">
