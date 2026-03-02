@@ -2,7 +2,7 @@ name: React CI
 
 on:
   push:
-    branches: [ "dev", "main" ] # Экшен будет запускаться при пуше в dev
+    branches: [ "dev", "main" ] 
   pull_request:
     branches: [ "dev", "main" ]
 
@@ -21,7 +21,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci # Теперь у вас есть lock-файл, поэтому используем ci
+        run: npm ci 
 
       - name: Run Linter
         run: npm run lint
