@@ -13,11 +13,11 @@ Users can explore topics, complete challenges, and track their learning progress
 
 **SAA Cat** is derived from the first letters of our team members’ names:
 
-- **S** — Sergey  
-- **A** — Anna  
-- **A** — Artem  
+- **S** — Sergey
+- **A** — Anna
+- **A** — Artem
 
-And **Cat**… because cats are cute 
+And **Cat**… because cats are cute
 
 The theme adds a light, friendly tone to the learning experience while keeping the educational focus.
 
@@ -32,7 +32,7 @@ The theme adds a light, friendly tone to the learning experience while keeping t
   GitHub: https://github.com/dzzuze
 
 - **Anna Dzig**  
-  GitHub: https://github.com/annaDzig  
+  GitHub: https://github.com/annaDzig
 
 ---
 
@@ -45,18 +45,18 @@ The theme adds a light, friendly tone to the learning experience while keeping t
 
 ---
 
-##  Tech Stack
+## Tech Stack
 
 - React
 - TypeScript (strict mode)
 - Vite
 - ESLint + Prettier
 - LocalStorage / Mock Data
-- Tailwind 
+- Tailwind
 
 ---
 
-##  Development Timeline
+## Development Timeline
 
 The project is being developed as part of the RS School JS/FE Final Project (Tandem), following an agile, iterative workflow.
 
@@ -68,7 +68,6 @@ https://dzzuze.github.io/SAA-Cat/
 
 ---
 
- *Learning can be serious and cute at the same time.*
+_Learning can be serious and cute at the same time._
 
 ---
-
