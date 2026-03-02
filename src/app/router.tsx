@@ -43,7 +43,7 @@ const router = createBrowserRouter(
   ],
   {
     basename: "/SAA-Cat",
-  }
+  },
 );
 export default function AppRouter() {
   return <RouterProvider router={router} />;
