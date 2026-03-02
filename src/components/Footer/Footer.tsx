@@ -2,14 +2,12 @@ import { NavLink } from "react-router-dom";
 import HeaderCat from "../../assets/header-cat.svg?react";
 import HidingCat from "../../assets/hiding-cat.svg?react";
 
-
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
     <footer className="relative  bg-yellow-100">
-     <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6  py-8 md:flex-row">
-        
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6  py-8 md:flex-row">
         <div className="flex items-center gap-3">
           <HeaderCat className="h-12 w-12" aria-hidden />
           <span className="text-lg font-semibold">SAA-Cat</span>
@@ -39,7 +37,10 @@ export default function Footer() {
           © {year} Rolling Scope School.
         </div>
       </div>
-<HidingCat className="pointer-events-none absolute bottom-0 right-0 translate-x-[20px] h-26 w-26" aria-hidden />
+      <HidingCat
+        className="pointer-events-none absolute bottom-0 right-0 translate-x-[20px] h-26 w-26"
+        aria-hidden
+      />
     </footer>
   );
 }

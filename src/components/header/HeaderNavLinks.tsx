@@ -16,11 +16,7 @@ const navLinkClass = ({ isActive }: NavLinkArgs) =>
     isActive ? "text-yellow-700" : "text-gray-800 hover:text-yellow-700",
   ].join(" ");
 
-export default function HeaderNavLinks({
-  links,
-  className = "",
-  onNavigate,
-}: Props) {
+export default function HeaderNavLinks({ links, className = "", onNavigate }: Props) {
   return (
     <ul className={className}>
       {links.map((l) => (

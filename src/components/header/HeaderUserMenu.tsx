@@ -4,18 +4,18 @@ import type { HeaderLink } from "./headerLinks";
 
 type Props = {
   user: User;
+  links: HeaderLink[];
   isOpen: boolean;
   setIsOpen: (value: boolean | ((prev: boolean) => boolean)) => void;
-  links: HeaderLink[];
   onLogout: () => Promise<void>;
   menuRef: React.RefObject<HTMLDivElement | null>;
 };
 
 export default function HeaderUserMenu({
   user,
+  links,
   isOpen,
   setIsOpen,
-  links,
   onLogout,
   menuRef,
 }: Props) {
@@ -26,7 +26,7 @@ export default function HeaderUserMenu({
         onClick={() => setIsOpen((v) => !v)}
         aria-haspopup="menu"
         aria-expanded={isOpen}
-        className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-gray-900 text-sm shadow transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-yellow-300"
+        className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-sm shadow transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-yellow-300"
       >
         <span className="sr-only">Open user menu</span>🐾
       </button>
@@ -37,12 +37,8 @@ export default function HeaderUserMenu({
           className="absolute right-0 mt-2 w-48 overflow-hidden rounded-lg border bg-white shadow-lg"
         >
           <div className="border-b px-4 py-3 text-sm">
-            <span className="block font-medium">
-              {user.displayName || "Cat Lover"}
-            </span>
-            <span className="block truncate text-xs text-gray-500">
-              {user.email}
-            </span>
+            <span className="block font-medium">{user.displayName || "Cat Lover"}</span>
+            <span className="block truncate text-xs text-gray-500">{user.email}</span>
           </div>
 
           <ul className="p-2 text-sm font-medium text-gray-800">

@@ -1,18 +1,20 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { signOut } from "firebase/auth";
+
 import { auth } from "../../lib/firebase/firebase";
 import { useAuth } from "../../auth/useAuth";
 
 import WatchingCat from "../../assets/watching-cat.svg?react";
 
 import HeaderBrand from "./HeaderBrand";
-import HeaderNavLinks from "./HeaderNavLinks";
 import HeaderUserMenu from "./HeaderUserMenu";
+import HeaderNavLinks from "./HeaderNavLinks";
 import HeaderMobileMenu from "./HeaderMobileMenu";
+
 import { authedLinks, baseLinks, guestLinks } from "./headerLinks";
 
 export default function Header() {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const isAuthed = Boolean(user?.uid);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,8 +35,7 @@ export default function Header() {
   useEffect(() => {
     const onPointerDown = (e: PointerEvent) => {
       if (!userMenuRef.current) return;
-      if (!userMenuRef.current.contains(e.target as Node))
-        setIsUserMenuOpen(false);
+      if (!userMenuRef.current.contains(e.target as Node)) setIsUserMenuOpen(false);
     };
 
     const onKeyDown = (e: KeyboardEvent) => {
@@ -57,22 +58,37 @@ export default function Header() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+
+  const showAuthedUI = !loading && isAuthed;
+
+const desktopLinks = useMemo(() => {
+  if (loading) return baseLinks; 
+  return isAuthed ? [...baseLinks, ...authedLinks] : [...baseLinks, ...guestLinks];
+}, [loading, isAuthed]);
+
+const mobileLinks = useMemo(() => {
+  if (loading) return baseLinks;
+  return isAuthed ? [...baseLinks, ...authedLinks] : [...baseLinks, ...guestLinks];
+}, [loading, isAuthed]);
+
   return (
     <nav className="fixed top-0 z-20 w-full border-b bg-yellow-100">
       <div className="mx-auto flex flex-wrap items-center justify-between p-4">
         <HeaderBrand onNavigate={closeAll} />
 
         <div className="flex items-center gap-3 md:order-2">
-          {isAuthed && user && (
+          {showAuthedUI && user && (
             <HeaderUserMenu
               user={user}
+              links={authedLinks}
               isOpen={isUserMenuOpen}
               setIsOpen={setIsUserMenuOpen}
-              links={authedLinks}
               onLogout={handleLogout}
               menuRef={userMenuRef}
             />
           )}
+
+          {loading && <div className="text-sm font-medium text-gray-700">Loading…</div>}
 
           <button
             type="button"
@@ -89,34 +105,39 @@ export default function Header() {
               viewBox="0 0 24 24"
               fill="none"
             >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeWidth="2"
-                d="M5 7h14M5 12h14M5 17h14"
-              />
+              <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M5 7h14M5 12h14M5 17h14" />
             </svg>
           </button>
         </div>
 
-        <div className="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto">
-          <HeaderNavLinks
-            links={[...baseLinks, ...(isAuthed ? [] : guestLinks)]}
-            className="flex items-center gap-8 font-medium"
-          />
-        </div>
-      </div>
+       <div className="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto">
+          <div className="flex items-center gap-8 font-medium">
+             <HeaderNavLinks links={desktopLinks} className="flex items-center gap-8 font-medium" />
+          </div>
+  
+      <WatchingCat className="absolute bottom-0 right-6 hidden h-18 w-18 md:block" aria-hidden />
 
-      <WatchingCat
-        className="absolute bottom-0 right-6 hidden h-18 w-18 md:block"
-        aria-hidden
-      />
-
+</div>
+      </div>   
+      <div className="">
+      {showAuthedUI && (
+        <button
+          type="button"
+          onClick={handleLogout}
+          className="rounded px-3 py-2 text-sm font-medium text-gray-800 transition hover:bg-yellow-200"
+        >
+          Sign out
+        </button>
+      )}
+    
+</div>
+      
       <HeaderMobileMenu
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
-        links={baseLinks}
-        extraLinks={!isAuthed ? guestLinks : undefined}
+        links={mobileLinks}
+        isAuthed={isAuthed}
+        onLogout={handleLogout}
       />
     </nav>
   );
