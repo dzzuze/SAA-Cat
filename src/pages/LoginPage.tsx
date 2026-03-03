@@ -35,11 +35,11 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center text-white">
+    <div className="flex flex-col items-center justify-center text-white pt-11">
       <div className="mb-8 flex flex-col items-center">
-        <div className="mb-4 text-6xl">🐱</div>
         <h1 className="text-4xl font-black tracking-tighter">
-          SAA-<span className="text-yellow-400">CAT</span>
+          SAA<span>🐱</span>
+          <span className="text-yellow-400">CAT</span>
         </h1>
       </div>
 
