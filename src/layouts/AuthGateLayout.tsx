@@ -1,8 +1,8 @@
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
 
 export default function AuthGateLayout() {
-  const { loading } = useAuth();
+  const { user, loading } = useAuth();
 
   if (loading) {
     return (
@@ -10,6 +10,10 @@ export default function AuthGateLayout() {
         <p className="text-sm text-gray-500">Checking authentication...</p>
       </div>
     );
+  }
+
+  if (user) {
+    return <Navigate to="/dashboard" replace />;
   }
 
   return <Outlet />;
