@@ -74,7 +74,7 @@ export default function Header() {
       ? [...baseLinks, ...authedLinks]
       : [...baseLinks, ...guestLinks];
   }, [loading, isAuthed]);
-// 39005F  7818B4
+
   return (
     <nav className="fixed top-0 z-20 w-full bg-green-800">
       <div className="mx-auto flex flex-wrap items-center justify-between px-4 py-0">
