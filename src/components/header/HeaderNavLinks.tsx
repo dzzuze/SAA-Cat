@@ -11,9 +11,9 @@ type NavLinkArgs = { isActive: boolean };
 
 const navLinkClass = ({ isActive }: NavLinkArgs) =>
   [
-    "block rounded px-3 py-2 text-sm font-bold text-black",
+    "block rounded px-3 py-2 text-sm font-bold",
     "md:p-0 md:bg-transparent",
-    isActive ? "text-yellow-400" : "hover:text-yellow-400",
+    isActive ? "text-yellow-400" : "hover:text-yellow-200",
   ].join(" ");
 
 export default function HeaderNavLinks({

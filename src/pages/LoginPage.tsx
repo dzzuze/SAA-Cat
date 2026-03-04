@@ -39,7 +39,7 @@ export default function LoginPage() {
       <div className="mb-8 flex flex-col items-center">
         <h1 className="text-4xl font-black tracking-tighter">
           SAA<span>🐱</span>
-          <span className="text-yellow-400">CAT</span>
+          <span className="text-green-800">CAT</span>
         </h1>
       </div>
 
@@ -80,7 +80,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-lg bg-yellow-400 py-3 font-bold text-black hover:bg-yellow-300 active:scale-[0.98] transition-all"
+            className="w-full rounded-lg bg-green-800 py-3 font-bold text-black hover:bg-yellow-300 active:scale-[0.98] transition-all"
           >
             {loading ? "Вход..." : "Войти в систему"}
           </button>
