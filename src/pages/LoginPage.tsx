@@ -39,7 +39,7 @@ export default function LoginPage() {
       <div className="mb-8 flex flex-col items-center">
         <h1 className="text-4xl font-black tracking-tighter">
           SAA<span>🐱</span>
-          <span className="text-green-800">CAT</span>
+          <span className="text-yellow-400">CAT</span>
         </h1>
       </div>
 
