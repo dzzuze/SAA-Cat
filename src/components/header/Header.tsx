@@ -76,7 +76,7 @@ export default function Header() {
   }, [loading, isAuthed]);
 
   return (
-    <nav className="fixed top-0 z-20 w-full bg-green-800">
+    <nav className="fixed top-0 z-20 w-full bg-[#3d3d3d]">
       <div className="mx-auto flex flex-wrap items-center justify-between px-4 py-0">
         <HeaderBrand onNavigate={closeAll} />
 
