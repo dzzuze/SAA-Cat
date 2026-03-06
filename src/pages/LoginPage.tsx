@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { loginUser } from "../auth/login";
 import getFirebaseErrorMessage from "../helpers/getFirebaseErrorMessage";
 import { FirebaseError } from "firebase/app";
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -22,12 +23,17 @@ export default function LoginPage() {
     try {
       setLoading(true);
       await loginUser(email, password);
+      toast.success("Successful login!");
       navigate(from, { replace: true });
     } catch (error: unknown) {
       if (error instanceof FirebaseError) {
-        setError(getFirebaseErrorMessage(error.code));
+        const message = getFirebaseErrorMessage(error.code);
+        setError(message);
+        toast.error(message);
       } else {
-        setError("Неизвестная ошибка");
+        const message = "Unknown error";
+        setError(message);
+        toast.error(message);
       }
     } finally {
       setLoading(false);
