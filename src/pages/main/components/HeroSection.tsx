@@ -22,13 +22,9 @@ export default function HeroSection() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <Button>
-              {heroData.primaryButtonText}
-            </Button>
+            <Button>{heroData.primaryButtonText}</Button>
 
-            <Button variant="secondary">
-              {heroData.secondaryButtonText}
-            </Button>
+            <Button variant="secondary">{heroData.secondaryButtonText}</Button>
           </div>
         </div>
         <div className="overflow-hidden rounded-[28px] border-4 border-white bg-white shadow-xl">
