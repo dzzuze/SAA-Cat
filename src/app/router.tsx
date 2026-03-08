@@ -3,7 +3,7 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import MainPage from "../pages/MainPage";
+import MainPage from "../pages/main/MainPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import UserPage from "../pages/UserPage";
