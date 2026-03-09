@@ -40,7 +40,9 @@ export default function HowItWorksSection() {
                   />
                 </div>
 
-                <h3 className="text-lg font-bold text-slate-900">{item.title}</h3>
+                <h3 className="text-lg font-bold text-slate-900">
+                  {item.title}
+                </h3>
 
                 <p className="mt-3 text-sm leading-6 text-slate-600">
                   {item.description}

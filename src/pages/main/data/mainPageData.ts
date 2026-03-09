@@ -50,3 +50,50 @@ export const howItWorksData: HowItWorksData = {
     },
   ],
 };
+export type TopicLevel = "Beginner" | "Intermediate" | "Advanced";
+
+export type TopicItemId = "core-javascript" | "typescript" | "algorithms";
+
+export interface TopicItem {
+  id: TopicItemId;
+  title: string;
+  description: string;
+  level: TopicLevel;
+}
+
+interface TopicsSectionData {
+  title: string;
+  description: string;
+  actionLabel: string;
+  items: TopicItem[];
+}
+
+export const topicsSectionData: TopicsSectionData = {
+  title: "Practice by Topic",
+  description:
+    "Hand-picked challenges across the most popular categories to help you build confidence step by step.",
+  actionLabel: "See all topics",
+  items: [
+    {
+      id: "core-javascript",
+      title: "Core JavaScript",
+      description:
+        "Master closures, prototypes, scope, hoisting, and the event loop through practical tasks.",
+      level: "Beginner",
+    },
+    {
+      id: "typescript",
+      title: "TypeScript",
+      description:
+        "Practice interfaces, generics, utility types, and strongly typed component architecture.",
+      level: "Intermediate",
+    },
+    {
+      id: "algorithms",
+      title: "Algorithms",
+      description:
+        "Train logical thinking with sorting, searching, recursion, and real interview-style tasks.",
+      level: "Advanced",
+    },
+  ],
+};
