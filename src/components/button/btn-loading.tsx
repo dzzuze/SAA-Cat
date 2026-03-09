@@ -3,7 +3,12 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 }
 
-const ButtonLoading = ({ loading, children, className, ...props }: ButtonProps) => {
+const ButtonLoading = ({
+  loading,
+  children,
+  className,
+  ...props
+}: ButtonProps) => {
   return (
     <button
       {...props}

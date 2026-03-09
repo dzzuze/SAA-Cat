@@ -18,7 +18,7 @@ export default function RegisterPage() {
     setError(null);
 
     if (password !== repeatPassword) {
-      setError("Пароли не совпадают");
+      setError("The passwords don't match");
       return;
     }
 
@@ -31,7 +31,7 @@ export default function RegisterPage() {
       if (error instanceof FirebaseError) {
         setError(getFirebaseErrorMessage(error.code));
       } else {
-        setError("Неизвестная ошибка");
+        setError("Unknown error");
       }
     } finally {
       setLoading(false);
