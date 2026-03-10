@@ -1,14 +1,14 @@
 export default function getFirebaseErrorMessage(code: string): string {
   switch (code) {
     case "auth/user-not-found":
-      return "Пользователь не найден";
+      return "User not found";
     case "auth/wrong-password":
-      return "Неверный пароль";
+      return "Incorrect password";
     case "auth/invalid-email":
-      return "Неверный email";
+      return "Invalid email";
     case "auth/too-many-requests":
-      return "Слишком много попыток. Попробуйте позже";
+      return "Too many attempts. Try again later.";
     default:
-      return "Ошибка входа";
+      return "Login error";
   }
 }
