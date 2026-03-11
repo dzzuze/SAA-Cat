@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { loginUser } from "../auth/login";
 import getFirebaseErrorMessage from "../helpers/getFirebaseErrorMessage";
 import { FirebaseError } from "firebase/app";
@@ -94,9 +94,12 @@ export default function LoginPage() {
 
         <div className="mt-6 text-center text-sm text-zinc-500">
           Forgot your password?{" "}
-          <span className="cursor-pointer text-yellow-400 hover:underline">
+          <Link
+            to="/reset-password"
+            className="text-yellow-400 hover:underline hover:text-yellow-300"
+          >
             Meow!
-          </span>
+          </Link>
         </div>
       </div>
     </div>
