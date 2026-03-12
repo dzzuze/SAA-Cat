@@ -15,7 +15,7 @@ const levelClasses: Record<TopicLevel, string> = {
 export default function TopicCard({ topic, image }: TopicCardProps) {
   return (
     <article className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition-transform duration-200 hover:-translate-y-1">
-      <div className="aspect-[16/9] w-full overflow-hidden bg-slate-100">
+      <div className="aspect-[8/9] w-full overflow-hidden bg-slate-100">
         <img
           src={image}
           alt={topic.title}

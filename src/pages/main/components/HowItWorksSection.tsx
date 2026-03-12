@@ -34,7 +34,7 @@ export default function HowItWorksSection() {
               >
                 <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-50">
                   <Icon
-                    className="h-36 w-36 text-slate-900"
+                    className="h-46 w-46 text-slate-900"
                     aria-hidden="true"
                     focusable="false"
                   />
