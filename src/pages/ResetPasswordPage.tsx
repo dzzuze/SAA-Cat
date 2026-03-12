@@ -45,7 +45,12 @@ export default function ResetPasswordPage() {
       {success ? (
         <>
           <p>A password reset email has been sent to your email.</p>
-          <Link to="/login">Return to the login page</Link>
+          <Link
+            className="inline-block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors"
+            to="/login"
+          >
+            Return to the login page
+          </Link>
         </>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -62,7 +67,11 @@ export default function ResetPasswordPage() {
 
           {error && <p>{error}</p>}
 
-          <button type="submit" disabled={loading}>
+          <button
+            type="submit"
+            disabled={loading}
+            className="inline-block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors"
+          >
             {loading ? "Sending..." : "Send link"}
           </button>
         </form>
