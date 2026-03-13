@@ -14,7 +14,7 @@ describe("ResetPasswordPage", () => {
     vi.clearAllMocks();
   });
 
-  it("должен успешно отправлять форму и показывать сообщение об успехе", async () => {
+  it("should successfully submit the form and show a success message", async () => {
     vi.mocked(resetPassword).mockResolvedValue(undefined);
 
     render(
@@ -46,7 +46,7 @@ describe("ResetPasswordPage", () => {
     expect(resetPassword).toHaveBeenCalledWith("test@example.com");
   });
 
-  it("должен показывать ошибку, если сброс пароля не удался", async () => {
+  it("should show an error if the password reset fails", async () => {
     const mockError = { code: "auth/user-not-found" };
     vi.mocked(resetPassword).mockRejectedValue(mockError);
 
