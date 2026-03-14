@@ -77,7 +77,7 @@ export default function Header() {
 
   return (
     <nav className="fixed top-0 z-20 w-full bg-[#3d3d3d]">
-      <div className="mx-auto flex flex-wrap items-center justify-between px-4 py-0">
+      <div className="mx-auto flex flex-wrap justify-between px-4 py-0">
         <HeaderBrand onNavigate={closeAll} />
 
         <div className="flex items-center gap-3 md:order-2">
@@ -129,24 +129,19 @@ export default function Header() {
             />
           </div>
 
-          <WatchingCat
-            className="absolute -bottom-5 right-35 hidden h-18 w-18 md:block"
-            aria-hidden
-          />
+          <div className="absolute -bottom-5 right-15 hidden items-end gap-5 md:flex">
+            <WatchingCat className="h-18 w-18" aria-hidden />
+            {showAuthedUI && (
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="mb-8 rounded px-3 py-2 text-sm font-medium text-white transition bg-amber-400 hover:bg-yellow-200 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-300">
+                Sign out
+              </button>
+            )}
+          </div>
         </div>
       </div>
-      <div className="">
-        {showAuthedUI && (
-          <button
-            type="button"
-            onClick={handleLogout}
-            className="rounded px-3 py-2 text-sm font-medium text-gray-800 transition hover:bg-yellow-200"
-          >
-            Sign out
-          </button>
-        )}
-      </div>
-
       <HeaderMobileMenu
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
