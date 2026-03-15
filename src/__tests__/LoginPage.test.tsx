@@ -82,4 +82,49 @@ describe("LoginPage", () => {
 
     expect(toast.error).toHaveBeenCalled();
   });
+
+  it("should render all main elements correctly", () => {
+    
+    render(
+      <MemoryRouter>
+        <LoginPage />
+      </MemoryRouter>
+    );
+
+    expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
+    expect(screen.getByText(/Entrance/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("meow@example.com")).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("••••••••")).toBeInTheDocument();
+  });
+
+  it("should update input values on change", () => {
+    
+    render(
+      <MemoryRouter>
+        <LoginPage />
+      </MemoryRouter>
+    );
+
+    const emailInput = screen.getByPlaceholderText("meow@example.com") as HTMLInputElement;
+    const passwordInput = screen.getByPlaceholderText("••••••••") as HTMLInputElement;
+
+    fireEvent.change(emailInput, { target: { value: "test@mail.com" } });
+    fireEvent.change(passwordInput, { target: { value: "123456" } });
+
+    expect(emailInput.value).toBe("test@mail.com");
+    expect(passwordInput.value).toBe("123456");
+  });
+
+  it("should have a link to the reset password page", () => {
+    
+    render(
+      <MemoryRouter>
+        <LoginPage />
+      </MemoryRouter>
+    );
+
+    const forgotPasswordLink = screen.getByRole("link", { name: /meow!/i });
+    expect(forgotPasswordLink).toBeInTheDocument();
+    expect(forgotPasswordLink.getAttribute("href")).toBe("/reset-password");
+  });
 });
