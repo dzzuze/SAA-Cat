@@ -84,11 +84,10 @@ describe("LoginPage", () => {
   });
 
   it("should render all main elements correctly", () => {
-    
     render(
       <MemoryRouter>
         <LoginPage />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
@@ -98,15 +97,18 @@ describe("LoginPage", () => {
   });
 
   it("should update input values on change", () => {
-    
     render(
       <MemoryRouter>
         <LoginPage />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
-    const emailInput = screen.getByPlaceholderText("meow@example.com") as HTMLInputElement;
-    const passwordInput = screen.getByPlaceholderText("••••••••") as HTMLInputElement;
+    const emailInput = screen.getByPlaceholderText(
+      "meow@example.com",
+    ) as HTMLInputElement;
+    const passwordInput = screen.getByPlaceholderText(
+      "••••••••",
+    ) as HTMLInputElement;
 
     fireEvent.change(emailInput, { target: { value: "test@mail.com" } });
     fireEvent.change(passwordInput, { target: { value: "123456" } });
@@ -116,11 +118,10 @@ describe("LoginPage", () => {
   });
 
   it("should have a link to the reset password page", () => {
-    
     render(
       <MemoryRouter>
         <LoginPage />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const forgotPasswordLink = screen.getByRole("link", { name: /meow!/i });
