@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { MemoryRouter } from "react-router-dom";
-import LoginPage from "../pages/LoginPage"; 
+import LoginPage from "../pages/LoginPage";
 import { loginUser } from "../auth/login";
 import toast from "react-hot-toast";
 import type { UserCredential } from "firebase/auth";
@@ -28,13 +28,15 @@ describe("LoginPage", () => {
     vi.clearAllMocks();
   });
 
-   it("should successfully log in and redirect to the dashboard", async () => {
-    vi.mocked(loginUser).mockResolvedValue({ user: { email: "test@meow.com" }} as UserCredential);
+  it("should successfully log in and redirect to the dashboard", async () => {
+    vi.mocked(loginUser).mockResolvedValue({
+      user: { email: "test@meow.com" },
+    } as UserCredential);
 
     render(
       <MemoryRouter>
         <LoginPage />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const emailInput = screen.getByPlaceholderText("meow@example.com");
@@ -51,16 +53,19 @@ describe("LoginPage", () => {
     await waitFor(() => {
       expect(loginUser).toHaveBeenCalledWith("test@meow.com", "password123");
       expect(toast.success).toHaveBeenCalledWith("Successful login!");
-      expect(mockNavigate).toHaveBeenCalledWith("/dashboard", { replace: true });
-    });});
+      expect(mockNavigate).toHaveBeenCalledWith("/dashboard", {
+        replace: true,
+      });
+    });
+  });
 
-    it("should show an error if login fails", async () => {
+  it("should show an error if login fails", async () => {
     vi.mocked(loginUser).mockRejectedValue(new Error("Fail"));
 
     render(
       <MemoryRouter>
         <LoginPage />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const emailInput = screen.getByPlaceholderText("meow@example.com");
@@ -72,10 +77,9 @@ describe("LoginPage", () => {
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-    expect(submitButton).not.toBeDisabled();
+      expect(submitButton).not.toBeDisabled();
     });
 
     expect(toast.error).toHaveBeenCalled();
   });
 });
-

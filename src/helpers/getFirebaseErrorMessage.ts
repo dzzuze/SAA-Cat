@@ -11,7 +11,5 @@ const firebaseErrorMessages: Record<string, string> = {
 };
 
 export default function getFirebaseErrorMessage(code: string): string {
-  return (
-    firebaseErrorMessages[code] ?? "Login error"
-  );
+  return firebaseErrorMessages[code] ?? "Login error";
 }
