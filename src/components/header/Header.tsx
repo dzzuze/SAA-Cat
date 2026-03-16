@@ -135,7 +135,8 @@ export default function Header() {
               <button
                 type="button"
                 onClick={handleLogout}
-                className="mb-8 rounded px-3 py-2 text-sm font-medium text-white transition bg-amber-400 hover:bg-yellow-200 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-300">
+                className="mb-8 rounded px-3 py-2 text-sm font-medium text-white transition bg-amber-400 hover:bg-yellow-200 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-300"
+              >
                 Sign out
               </button>
             )}
