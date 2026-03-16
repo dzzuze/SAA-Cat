@@ -13,16 +13,16 @@ type NavLinkArgs = { isActive: boolean };
 export default function HeaderNavLinks({
   links,
   className = "",
-  linkClassName, 
+  linkClassName,
   onNavigate,
 }: Props) {
   const navLinkClass = ({ isActive }: NavLinkArgs) =>
     [
       "block rounded px-3 py-2 text-sm font-bold",
       "md:p-0 md:bg-transparent",
-      linkClassName               
+      linkClassName
         ? isActive
-          ? "text-gray-900 font-extrabold bg-yellow-200 border-2 border-white"   
+          ? "text-gray-900 font-extrabold bg-yellow-200 border-2 border-white"
           : linkClassName
         : isActive
           ? "text-yellow-400"

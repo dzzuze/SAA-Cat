@@ -23,7 +23,7 @@ export default function HeaderMobileMenu({
       <HeaderNavLinks
         links={links}
         className="flex flex-col gap-2 text-center font-medium"
-        linkClassName="text-gray-800 hover:text-gray-950" 
+        linkClassName="text-gray-800 hover:text-gray-950"
         onNavigate={onClose}
       />
 
