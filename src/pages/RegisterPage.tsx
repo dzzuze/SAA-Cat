@@ -18,7 +18,7 @@ export default function RegisterPage() {
     setError(null);
 
     if (password !== repeatPassword) {
-      setError("Пароли не совпадают");
+      setError("The passwords don't match");
       return;
     }
 
@@ -31,7 +31,7 @@ export default function RegisterPage() {
       if (error instanceof FirebaseError) {
         setError(getFirebaseErrorMessage(error.code));
       } else {
-        setError("Неизвестная ошибка");
+        setError("Unknown error");
       }
     } finally {
       setLoading(false);
@@ -39,17 +39,17 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex  flex-col items-center justify-center bg-[#18181b] text-white">
+    <div className="flex flex-col items-center justify-center text-white pt-11">
       <div className="mb-8 flex flex-col items-center">
-        <div className="mb-4 text-6xl">🐱</div>
-        <h1 className="text-4xl font-black tracking-tighter text-white">
-          SAA-<span className="text-yellow-400">CAT</span>
+        <h1 className="text-4xl font-black tracking-tighter">
+          SAA<span>🐱</span>
+          <span className="text-yellow-400">CAT</span>
         </h1>
       </div>
 
-      <div className="w-full max-w-md rounded-2xl bg-[#27272a] p-8 shadow-2xl border border-zinc-800">
+      <div className="w-full max-w-md rounded-2xl bg-[#0f0f11] p-8 shadow-2xl border border-zinc-800">
         <h2 className="mb-6 text-xl font-semibold text-zinc-200">
-          Регистрация
+          Registration
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -69,7 +69,7 @@ export default function RegisterPage() {
 
           <div>
             <label className="mb-1 block text-sm font-medium text-zinc-400">
-              Пароль
+              Password
             </label>
             <input
               type="password"
@@ -84,7 +84,7 @@ export default function RegisterPage() {
 
           <div>
             <label className="mb-1 block text-sm font-medium text-zinc-400">
-              Повторите пароль
+              Repeat password
             </label>
             <input
               type="password"
@@ -101,9 +101,9 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-lg bg-yellow-400 py-3 font-bold text-black"
+            className="w-full bg-yellow-400 hover:bg-yellow-400 text-black font-bold py-3 rounded-xl transition-all shadow-[0_0_20px_rgba(234,179,8,0.2)] hover:shadow-[0_0_25px_rgba(234,179,8,0.4)] active:scale-[0.98]"
           >
-            {loading ? "Регистрация..." : "Регистрироваться"}
+            {loading ? "Registration..." : "Register"}
           </button>
         </form>
       </div>

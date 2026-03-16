@@ -6,9 +6,8 @@ export default function RootLayout() {
   return (
     <div className="min-h-screen flex flex-col overflow-hidden">
       <Header />
-      <main className=" flex w-full  flex-1 flex-col items-center justify-center  bg-gray-900 text-white">
-        <Outlet />
-      </main>
+      <main className="flex  flex-1  bg-[#1a1a1d] text-white" />
+      <Outlet />
       <Footer />
     </div>
   );

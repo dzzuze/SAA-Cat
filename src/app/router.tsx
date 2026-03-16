@@ -3,7 +3,7 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import MainPage from "../pages/MainPage";
+import MainPage from "../pages/main/MainPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import UserPage from "../pages/UserPage";
@@ -13,6 +13,7 @@ import NotFound from "../pages/NotFound";
 import RootLayout from "../layouts/RootLayout";
 import AuthGateLayout from "../layouts/AuthGateLayout";
 import ProtectedLayout from "../layouts/ProtectedLayout";
+import ResetPasswordPage from "../pages/ResetPasswordPage";
 
 const router = createBrowserRouter(
   [
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
           children: [
             { path: "/login", element: <LoginPage /> },
             { path: "/register", element: <RegisterPage /> },
+            { path: "/reset-password", element: <ResetPasswordPage /> },
           ],
         },
         {
