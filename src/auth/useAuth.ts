@@ -5,6 +5,7 @@ export const useAuth = () => {
   const profile = useAuthStore((s) => s.profile);
   const loading = useAuthStore((s) => s.loading);
   const logout = useAuthStore((s) => s.logout);
+  const updateProfile = useAuthStore((s) => s.updateProfile);
   const isAuth = !!user;
   return {
     user,
@@ -12,5 +13,6 @@ export const useAuth = () => {
     loading,
     isAuth,
     logout,
+    updateProfile,
   };
 };
