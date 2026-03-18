@@ -3,6 +3,7 @@ import { registerUser } from "../auth/register";
 import { useNavigate } from "react-router-dom";
 import getFirebaseErrorMessage from "../helpers/getFirebaseErrorMessage";
 import { FirebaseError } from "firebase/app";
+import BgCat from "../assets/bg-cat.svg?react";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -39,7 +40,16 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center text-white pt-11">
+    <div className="flex flex-col flex-1 items-center justify-center text-white pt-11 bg-[#1a1a1d]">
+      <div
+        className="absolute inset-0 flex justify-between opacity-6 pointer-events-none "
+        aria-hidden
+      >
+        <BgCat className="h-full w-1/3 object-cover" />
+        <BgCat className="h-full w-1/3 object-cover" />
+        <BgCat className="h-full w-1/3 object-cover" />
+      </div>
+
       <div className="mb-8 flex flex-col items-center">
         <h1 className="text-4xl font-black tracking-tighter">
           SAA<span>🐱</span>
@@ -47,7 +57,7 @@ export default function RegisterPage() {
         </h1>
       </div>
 
-      <div className="w-full max-w-md rounded-2xl bg-[#0f0f11] p-8 shadow-2xl border border-zinc-800">
+      <div className="w-full max-w-xs rounded-2xl bg-[#0f0f11] p-8 shadow-2xl border border-zinc-800">
         <h2 className="mb-6 text-xl font-semibold text-zinc-200">
           Registration
         </h2>
@@ -101,7 +111,7 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-yellow-400 hover:bg-yellow-400 text-black font-bold py-3 rounded-xl transition-all shadow-[0_0_20px_rgba(234,179,8,0.2)] hover:shadow-[0_0_25px_rgba(234,179,8,0.4)] active:scale-[0.98]"
+            className="w-full bg-yellow-400 hover:bg-yellow-400 cursor-pointer text-black font-bold py-3 rounded-xl transition-all shadow-[0_0_20px_rgba(234,179,8,0.2)] hover:shadow-[0_0_25px_rgba(234,179,8,0.4)] active:scale-[0.98]"
           >
             {loading ? "Registration..." : "Register"}
           </button>

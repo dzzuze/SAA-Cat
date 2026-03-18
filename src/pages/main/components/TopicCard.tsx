@@ -39,7 +39,7 @@ export default function TopicCard({ topic, image }: TopicCardProps) {
         </p>
 
         <div className="mt-6">
-          <Button variant="secondary" className="w-full">
+          <Button variant="secondary" className="w-full cursor-pointer">
             Practice
           </Button>
         </div>
