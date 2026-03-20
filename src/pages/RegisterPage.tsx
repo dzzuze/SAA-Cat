@@ -27,7 +27,7 @@ export default function RegisterPage() {
       setLoading(true);
       await registerUser(email, password);
 
-      navigate("/dashboard");
+      navigate("/user");
     } catch (error: unknown) {
       if (error instanceof FirebaseError) {
         setError(getFirebaseErrorMessage(error.code));

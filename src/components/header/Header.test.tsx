@@ -5,12 +5,6 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import Header from "./Header";
 import { useAuth } from "../../auth/useAuth";
 import { signOut } from "firebase/auth";
-import type { User } from "firebase/auth";
-
-const mockUser = {
-  uid: "123",
-  email: "anna@test.com",
-} as User;
 
 vi.mock("../../auth/useAuth", () => ({
   useAuth: vi.fn(),
@@ -100,7 +94,11 @@ describe("Header", () => {
   it("shows loading text when auth is loading", () => {
     vi.mocked(useAuth).mockReturnValue({
       user: null,
+      profile: null,
       loading: true,
+      isAuth: false,
+      logout: vi.fn(),
+      updateProfile: vi.fn(),
     });
 
     render(<Header />);
@@ -110,8 +108,12 @@ describe("Header", () => {
 
   it("shows desktop Sign out button for authenticated user", () => {
     vi.mocked(useAuth).mockReturnValue({
-      user: mockUser,
-      loading: false,
+      user: null,
+      profile: null,
+      loading: true,
+      isAuth: false,
+      logout: vi.fn(),
+      updateProfile: vi.fn(),
     });
 
     render(<Header />);
@@ -124,7 +126,11 @@ describe("Header", () => {
   it("does not show desktop Sign out button for guest user", () => {
     vi.mocked(useAuth).mockReturnValue({
       user: null,
-      loading: false,
+      profile: null,
+      loading: true,
+      isAuth: false,
+      logout: vi.fn(),
+      updateProfile: vi.fn(),
     });
 
     render(<Header />);
@@ -136,8 +142,12 @@ describe("Header", () => {
 
   it("calls firebase signOut when desktop Sign out is clicked", async () => {
     vi.mocked(useAuth).mockReturnValue({
-      user: mockUser,
-      loading: false,
+      user: null,
+      profile: null,
+      loading: true,
+      isAuth: false,
+      logout: vi.fn(),
+      updateProfile: vi.fn(),
     });
 
     vi.mocked(signOut).mockResolvedValue(undefined);
@@ -154,7 +164,11 @@ describe("Header", () => {
   it("opens mobile menu when burger button is clicked", () => {
     vi.mocked(useAuth).mockReturnValue({
       user: null,
-      loading: false,
+      profile: null,
+      loading: true,
+      isAuth: false,
+      logout: vi.fn(),
+      updateProfile: vi.fn(),
     });
 
     render(<Header />);
