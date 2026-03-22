@@ -6,6 +6,8 @@ import Header from "./Header";
 import { useAuth } from "../../auth/useAuth";
 import { signOut } from "firebase/auth";
 
+import type { User } from "firebase/auth";
+
 vi.mock("../../auth/useAuth", () => ({
   useAuth: vi.fn(),
 }));
@@ -60,7 +62,7 @@ vi.mock("./HeaderUserMenu", () => ({
       </button>
       <div>{isOpen ? "User menu open" : "User menu closed"}</div>
       <button type="button" onClick={onLogout}>
-        User menu sign out
+        Sign out
       </button>
     </div>
   ),
@@ -108,10 +110,10 @@ describe("Header", () => {
 
   it("shows desktop Sign out button for authenticated user", () => {
     vi.mocked(useAuth).mockReturnValue({
-      user: null,
+      user: { uid: "123" } as unknown as User,
       profile: null,
-      loading: true,
-      isAuth: false,
+      loading: false,
+      isAuth: true,
       logout: vi.fn(),
       updateProfile: vi.fn(),
     });
@@ -127,7 +129,7 @@ describe("Header", () => {
     vi.mocked(useAuth).mockReturnValue({
       user: null,
       profile: null,
-      loading: true,
+      loading: false,
       isAuth: false,
       logout: vi.fn(),
       updateProfile: vi.fn(),
@@ -142,10 +144,10 @@ describe("Header", () => {
 
   it("calls firebase signOut when desktop Sign out is clicked", async () => {
     vi.mocked(useAuth).mockReturnValue({
-      user: null,
+      user: { uid: "123" } as unknown as User,
       profile: null,
-      loading: true,
-      isAuth: false,
+      loading: false,
+      isAuth: true,
       logout: vi.fn(),
       updateProfile: vi.fn(),
     });
