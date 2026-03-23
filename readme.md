@@ -68,6 +68,12 @@ https://dzzuze.github.io/SAA-Cat/
 
 ---
 
+## Video for Week 5 Checkpoint
+
+[Video for Week 5 Checkpoint](https://www.youtube.com/watch?v=7-F7fzZgQK8)
+
+---
+
 _Learning can be serious and cute at the same time._
 
 ---
