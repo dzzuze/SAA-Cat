@@ -63,7 +63,9 @@ export default function Header() {
 
   const desktopLinks = useMemo(() => {
     if (loading) return baseLinks;
-    return isAuthed ? [...authedLinks] : [...baseLinks, ...guestLinks];
+    return isAuthed
+      ? [...baseLinks, ...authedLinks]
+      : [...baseLinks, ...guestLinks];
   }, [loading, isAuthed]);
 
   const mobileLinks = useMemo(() => {
@@ -82,7 +84,7 @@ export default function Header() {
           {showAuthedUI && user && (
             <HeaderUserMenu
               user={user}
-              links={authedLinks}
+              links={[...baseLinks, ...authedLinks]}
               isOpen={isUserMenuOpen}
               setIsOpen={setIsUserMenuOpen}
               onLogout={handleLogout}
