@@ -1,27 +1,26 @@
-import sergeyImg from "../assets/Sergey.jpg"
-import annaImg from "../assets/Anna.jpg"
-import artemImg from "../assets/Artem.jpg"
-
+import sergeyImg from "../assets/Sergey.jpg";
+import annaImg from "../assets/Anna.jpg";
+import artemImg from "../assets/Artem.jpg";
 
 const team = [
   {
     name: "Sergey",
     nick: "sidoryakasergey",
     github: "https://github.com/sidoryakasergey",
-    img: sergeyImg
+    img: sergeyImg,
   },
   {
     name: "Anna",
     nick: "annaDzig",
     github: "https://github.com/annaDzig",
-    img: annaImg
+    img: annaImg,
   },
   {
     name: "Artem",
     nick: "dzzuze",
     github: "https://github.com/dzzuze",
-    img: artemImg
-  }
+    img: artemImg,
+  },
 ];
 
 export default function AboutUsPage() {
@@ -33,7 +32,10 @@ export default function AboutUsPage() {
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {team.map((member, index) => (
-            <div key={index} className="flex flex-col overflow-hidden rounded-3xl bg-white shadow-lg">
+            <div
+              key={index}
+              className="flex flex-col overflow-hidden rounded-3xl bg-white shadow-lg"
+            >
               <div className="h-96 w-full">
                 <img
                   src={member.img}
@@ -45,10 +47,12 @@ export default function AboutUsPage() {
                 <h3 className="mb-4 text-xl font-bold text-black">
                   {member.name}
                   <br></br>
-                  <span className="inline-block
+                  <span
+                    className="inline-block
   bg-gradient-to-r from-[#1e40af] via-[#7e22ce] to-[#be185d] 
   bg-[length:200%_auto] animate-gradient 
-  bg-clip-text text-transparent ">
+  bg-clip-text text-transparent "
+                  >
                     {member.nick}
                   </span>
                 </h3>
