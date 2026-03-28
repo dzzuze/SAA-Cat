@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../../components/ui/Button";
 import type { TopicItem, TopicLevel } from "../data/mainPageData";
 
@@ -13,6 +14,12 @@ const levelClasses: Record<TopicLevel, string> = {
 };
 
 export default function TopicCard({ topic, image }: TopicCardProps) {
+  const navigate = useNavigate();
+
+  const handlePractice = () => {
+    navigate(`/dashboard?difficulty=${topic.difficultyFilter}`);
+  };
+
   return (
     <article className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition-transform duration-200 hover:-translate-y-1">
       <div className="aspect-[8/9] w-full overflow-hidden bg-slate-100">
@@ -39,7 +46,11 @@ export default function TopicCard({ topic, image }: TopicCardProps) {
         </p>
 
         <div className="mt-6">
-          <Button variant="secondary" className="w-full cursor-pointer">
+          <Button
+            onClick={handlePractice}
+            variant="secondary"
+            className="w-full cursor-pointer"
+          >
             Practice
           </Button>
         </div>
