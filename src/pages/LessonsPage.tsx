@@ -1,15 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
+import { doc, getDoc } from "firebase/firestore";
+
+import { useAuth } from "../auth/useAuth";
 import getTopicById from "../lib/firebase/getTopicById";
 import getLessonsByTopicId from "../lib/firebase/getLessonsByTopicId";
+import { db } from "../lib/firebase/firebase";
+
 import type { Topic } from "../types/topic";
 import type { Lesson } from "../types/lesson";
 
 export default function LessonsPage() {
   const { topicId } = useParams<{ topicId: string }>();
+  const { user } = useAuth();
 
   const [topic, setTopic] = useState<Topic | null>(null);
   const [lessons, setLessons] = useState<Lesson[]>([]);
+  const [completed, setCompleted] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -39,8 +46,26 @@ export default function LessonsPage() {
 
         setTopic(topicData);
         setLessons(lessonsData);
+
+        if (user?.uid) {
+          const userRef = doc(db, "users", user.uid);
+          const userSnapshot = await getDoc(userRef);
+
+          if (userSnapshot.exists()) {
+            const userData = userSnapshot.data();
+            const completedLessons = Array.isArray(userData.completed)
+              ? userData.completed
+              : [];
+
+            setCompleted(completedLessons);
+          } else {
+            setCompleted([]);
+          }
+        } else {
+          setCompleted([]);
+        }
       } catch (err) {
-        console.error("Failed to load lessons page:", err);
+        console.error(err);
         setError("Failed to load lessons.");
       } finally {
         setLoading(false);
@@ -48,7 +73,9 @@ export default function LessonsPage() {
     };
 
     void fetchData();
-  }, [topicId]);
+  }, [topicId, user?.uid]);
+
+  const completionSet = useMemo(() => new Set(completed), [completed]);
 
   if (loading) {
     return (
@@ -58,7 +85,7 @@ export default function LessonsPage() {
     );
   }
 
-  if (notFound) {
+  if (notFound || !topicId) {
     return <Navigate to="/404" replace />;
   }
 
@@ -70,13 +97,37 @@ export default function LessonsPage() {
     );
   }
 
-  if (!topic || !topicId) {
+  if (!topic) {
     return <Navigate to="/404" replace />;
   }
 
+  const isLessonCompleted = (lesson: Lesson) => {
+    const byId = `${topicId}:${lesson.id}`;
+    const legacyByTitle = `${topicId}:${lesson.title}`;
+
+    return completionSet.has(byId) || completionSet.has(legacyByTitle);
+  };
+
+  const isLessonUnlocked = (lesson: Lesson, index: number) => {
+    if (index === 0) return true;
+    if (isLessonCompleted(lesson)) return true;
+
+    const previousLesson = lessons[index - 1];
+    if (!previousLesson) return false;
+
+    return isLessonCompleted(previousLesson);
+  };
+
   return (
-    <section className="flex-1 mt-4  px-4 py-10 md:py-14">
+    <section className="flex-1 mt-8 px-4 py-10 md:py-14">
       <div className="mx-auto max-w-4xl">
+        <Link
+          to="/"
+          className="mb-6 inline-block text-sm font-medium text-emerald-600 transition hover:text-emerald-700"
+        >
+          ← Back
+        </Link>
+
         <header className="mb-10">
           <h1 className="mb-3 text-4xl font-bold text-slate-900">
             {topic.title}
@@ -92,29 +143,59 @@ export default function LessonsPage() {
           </div>
         ) : (
           <div className="space-y-4">
-            {lessons.map((lesson, index) => (
-              <Link
-                key={lesson.id}
-                to={`/learn/${topicId}/lessons/${lesson.id}`}
-                className="block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <div>
-                    <p className="mb-1 text-sm text-slate-500">
-                      Lesson {index + 1}
-                    </p>
+            {lessons.map((lesson, index) => {
+              const unlocked = isLessonUnlocked(lesson, index);
+              const completedLesson = isLessonCompleted(lesson);
 
-                    <h2 className="text-xl font-semibold text-slate-900">
-                      {lesson.title}
-                    </h2>
+              if (!unlocked) {
+                return (
+                  <div
+                    key={lesson.id}
+                    className="cursor-not-allowed rounded-2xl border border-slate-200 bg-slate-100 p-5 opacity-60"
+                  >
+                    <div className="flex items-center justify-between gap-4">
+                      <div>
+                        <p className="mb-1 text-sm text-slate-500">
+                          Lesson {index + 1}
+                        </p>
+
+                        <h2 className="text-xl font-semibold text-slate-700">
+                          {lesson.title}
+                        </h2>
+                      </div>
+
+                      <span className="text-sm font-medium text-slate-500">
+                        Locked
+                      </span>
+                    </div>
                   </div>
+                );
+              }
 
-                  <span className="text-sm font-medium text-emerald-600">
-                    Open →
-                  </span>
-                </div>
-              </Link>
-            ))}
+              return (
+                <Link
+                  key={lesson.id}
+                  to={`/learn/${topicId}/lessons/${lesson.id}`}
+                  className="block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <p className="mb-1 text-sm text-slate-500">
+                        Lesson {index + 1}
+                      </p>
+
+                      <h2 className="text-xl font-semibold text-slate-900">
+                        {lesson.title}
+                      </h2>
+                    </div>
+
+                    <span className="text-sm font-medium text-emerald-600">
+                      {completedLesson ? "Completed" : "Open →"}
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         )}
       </div>

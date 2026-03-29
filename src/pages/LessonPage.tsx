@@ -6,6 +6,8 @@ import markLessonCompleted from "../lib/firebase/markLessonCompleted";
 import type { Lesson } from "../types/lesson";
 import { useAuth } from "../auth/useAuth";
 import getLessonsByTopicId from "../lib/firebase/getLessonsByTopicId";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../lib/firebase/firebase";
 
 export default function LessonPage() {
   const { topicId, lessonId } = useParams<{
@@ -30,33 +32,58 @@ export default function LessonPage() {
       return;
     }
 
-    const fetchLesson = async () => {
-      try {
-        setLoading(true);
-        setError(null);
+  const fetchLesson = async () => {
+  try {
+    setLoading(true);
+    setError(null);
 
-        const [lessonData, lessonsData] = await Promise.all([
-          getLessonById(topicId, lessonId),
-          getLessonsByTopicId(topicId),
-        ]);
+    const [lessonData, lessonsData] = await Promise.all([
+      getLessonById(topicId, lessonId),
+      getLessonsByTopicId(topicId),
+    ]);
 
-        if (!lessonData) {
-          setNotFound(true);
-          return;
-        }
+    if (!lessonData) {
+      setNotFound(true);
+      return;
+    }
 
-        setLesson(lessonData);
-        setLessons(lessonsData);  
-      } catch (err) {
-        console.error(err);
-        setError("Failed to load lesson.");
-      } finally {
-        setLoading(false);
+    setLesson(lessonData);
+    setLessons(lessonsData);
+
+    if (user?.uid) {
+      const userRef = doc(db, "users", user.uid);
+      const userSnapshot = await getDoc(userRef);
+
+      if (userSnapshot.exists()) {
+        const userData = userSnapshot.data();
+        const completed = Array.isArray(userData.completed)
+          ? userData.completed
+          : [];
+
+        const lessonKeyById = `${topicId}:${lessonId}`;
+        const lessonKeyByTitle = `${topicId}:${lessonData.title}`;
+
+        const alreadyCompleted =
+          completed.includes(lessonKeyById) ||
+          completed.includes(lessonKeyByTitle);
+
+        setIsCompleted(alreadyCompleted);
+      } else {
+        setIsCompleted(false);
       }
-    };
+    } else {
+      setIsCompleted(false);
+    }
+  } catch (err) {
+    console.error(err);
+    setError("Failed to load lesson.");
+  } finally {
+    setLoading(false);
+  }
+};
 
     void fetchLesson();
-  }, [topicId, lessonId]);
+   }, [topicId, lessonId, user?.uid]);
 
   const handleComplete = async () => {
     if (!user?.uid || !topicId || !lessonId) {
@@ -104,11 +131,10 @@ export default function LessonPage() {
 
   const currentIndex = lessons.findIndex((item) => item.id === lesson.id);
   const prevLesson = currentIndex > 0 ? lessons[currentIndex - 1] : null;
-  const nextLesson =
-    currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : null; 
+  const nextLesson = currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : null;
 
   return (
-    <section className="px-4 py-10 md:py-14">
+    <section className="px-4 py-10 mt-8 md:py-14">
       <div className="mx-auto max-w-3xl">
         <Link
           to={`/learn/${topicId}`}
@@ -140,55 +166,55 @@ export default function LessonPage() {
           </button>
 
           <div className="flex justify-between gap-4">
-    {prevLesson ? (
-      <Link
-        to={`/learn/${topicId}/lessons/${prevLesson.id}`}
-        className="rounded-2xl border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-100"
-      >
-        ← Back
-      </Link>
-    ) : (
-      <Link
-        to={`/learn/${topicId}`}
-        className="rounded-2xl border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-100"
-      >
-        ← Back
-      </Link>
-    )}
+            {prevLesson ? (
+              <Link
+                to={`/learn/${topicId}/lessons/${prevLesson.id}`}
+                className="rounded-2xl border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-100"
+              >
+                ← Back
+              </Link>
+            ) : (
+              <Link
+                to={`/learn/${topicId}`}
+                className="rounded-2xl border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-100"
+              >
+                ← Back
+              </Link>
+            )}
 
-    {nextLesson ? (
-      <Link
-        to={`/learn/${topicId}/lessons/${nextLesson.id}`}
-        onClick={(e) => {
-          if (!isCompleted) e.preventDefault();
-        }}
-        className={`rounded-2xl px-6 py-3 font-semibold text-white transition ${
-          isCompleted
-            ? "bg-emerald-600 hover:bg-emerald-700"
-            : "cursor-not-allowed bg-gray-300"
-        }`}
-      >
-        Go on →
-      </Link>
-    ) : (
-      <Link
-        to={`/learn/${topicId}`}
-        onClick={(e) => {
-          if (!isCompleted) e.preventDefault();
-        }}
-        className={`rounded-2xl px-6 py-3 font-semibold transition ${
-          isCompleted
-            ? "bg-emerald-600 text-white hover:bg-emerald-700"
-            : "cursor-not-allowed bg-gray-300 text-gray-500"
-        }`}
-      >
-        Go on →
-      </Link>
-    )}
-  </div>
+            {nextLesson ? (
+              <Link
+                to={`/learn/${topicId}/lessons/${nextLesson.id}`}
+                onClick={(e) => {
+                  if (!isCompleted) e.preventDefault();
+                }}
+                className={`rounded-2xl px-6 py-3 font-semibold text-white transition ${
+                  isCompleted
+                    ? "bg-emerald-600 hover:bg-emerald-700"
+                    : "cursor-not-allowed bg-gray-300"
+                }`}
+              >
+                Go on →
+              </Link>
+            ) : (
+              <Link
+                to={`/learn/${topicId}`}
+                onClick={(e) => {
+                  if (!isCompleted) e.preventDefault();
+                }}
+                className={`rounded-2xl px-6 py-3 font-semibold transition ${
+                  isCompleted
+                    ? "bg-emerald-600 text-white hover:bg-emerald-700"
+                    : "cursor-not-allowed bg-gray-300 text-gray-500"
+                }`}
+              >
+                Go on →
+              </Link>
+            )}
+          </div>
 
-  {error ? <p className="text-sm text-red-500">{error}</p> : null}
-</div>
+          {error ? <p className="text-sm text-red-500">{error}</p> : null}
+        </div>
       </div>
     </section>
   );
