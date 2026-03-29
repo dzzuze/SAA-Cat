@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../auth/useAuth";
 import toast from "react-hot-toast";
 import { updateUserData } from "../auth/updateUserData";
-import BgCat from "../assets/bg-cat.svg?react";
 import { updateProfile as updateFirebaseProfile } from "firebase/auth";
+import BgCat from "../assets/bg-cat.svg?react";
 
 export default function UserPage() {
   const { profile, user, updateProfile } = useAuth();
@@ -53,15 +53,19 @@ export default function UserPage() {
         <BgCat className="h-full w-1/3 object-cover" />
       </div>
 
-      <h1 className="text-4xl font-black tracking-tighter>User information mb-8">
-        <span className="text-main-yellow">User</span> information
+      <h1 className="text-4xl font-black tracking-tighter mb-8">
+        <span className="text-main-yellow">User</span>
+        <span className="text-white"> information</span>
       </h1>
 
-      <div className="w-full max-w-xs rounded-2xl bg-[#0f0f11] p-8 shadow-2xl border border-zinc-800">
+      <div className="relative z-10 w-full max-w-xs rounded-2xl p-8 shadow-2xl border bg-[#5d3a1a] border-[#4a2e15]">
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-10 bg-gradient-to-b from-zinc-400 to-zinc-500 rounded-t-lg shadow-md flex items-center justify-center">
+          <div className="w-3 h-3 bg-zinc-600 rounded-full border border-zinc-700 shadow-inner"></div>
+        </div>
         <form onSubmit={handleSave} className="space-y-5">
           <label
             htmlFor="firstName"
-            className="mb-1 block text-sm font-medium text-zinc-400"
+            className="mb-1 block text-sm font-medium text-white"
           >
             Name
           </label>
@@ -76,7 +80,7 @@ export default function UserPage() {
           />
           <label
             htmlFor="lastName"
-            className="mb-1 block text-sm font-medium text-zinc-400"
+            className="mb-1 block text-sm font-medium text-white"
           >
             Last Name
           </label>
@@ -91,7 +95,7 @@ export default function UserPage() {
           />
           <label
             htmlFor="nickName"
-            className="mb-1 block text-sm font-medium text-zinc-400"
+            className="mb-1 block text-sm font-medium text-white"
           >
             Nickname
           </label>
@@ -106,7 +110,7 @@ export default function UserPage() {
           />
           <button
             disabled={isPending}
-            className="w-full bg-yellow-400 hover:bg-yellow-400 cursor-pointer text-black font-bold py-3 rounded-xl transition-all shadow-[0_0_20px_rgba(234,179,8,0.2)] hover:shadow-[0_0_25px_rgba(234,179,8,0.4)] active:scale-[0.98]"
+            className="mt-5 mb-2 w-full bg-yellow-400 hover:bg-yellow-400 cursor-pointer text-black font-bold py-3 rounded-xl transition-all shadow-[0_0_20px_rgba(234,179,8,0.2)] hover:shadow-[0_0_25px_rgba(234,179,8,0.4)] active:scale-[0.98]"
           >
             {isPending ? "Saving..." : "Save Changes"}
           </button>

@@ -59,6 +59,7 @@ export interface TopicItem {
   title: string;
   description: string;
   level: TopicLevel;
+  difficultyFilter: string;
 }
 
 interface TopicsSectionData {
@@ -80,6 +81,7 @@ export const topicsSectionData: TopicsSectionData = {
       description:
         "Master closures, prototypes, scope, hoisting, and the event loop through practical tasks.",
       level: "Beginner",
+      difficultyFilter: "beginner",
     },
     {
       id: "typescript",
@@ -87,6 +89,7 @@ export const topicsSectionData: TopicsSectionData = {
       description:
         "Practice interfaces, generics, utility types, and strongly typed component architecture.",
       level: "Intermediate",
+      difficultyFilter: "intermediate",
     },
     {
       id: "algorithms",
@@ -94,6 +97,7 @@ export const topicsSectionData: TopicsSectionData = {
       description:
         "Train logical thinking with sorting, searching, recursion, and real interview-style tasks.",
       level: "Advanced",
+      difficultyFilter: "advanced",
     },
   ],
 };

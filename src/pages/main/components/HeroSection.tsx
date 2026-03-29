@@ -1,8 +1,11 @@
 import Button from "../../../components/ui/Button";
 import { heroData } from "../data/mainPageData";
 import heroImage from "../../../assets/main-page-cat.png";
+import { useNavigate } from "react-router-dom";
 
 export default function HeroSection() {
+  const navigate = useNavigate();
+
   return (
     <section className="bg-stone-200 py-16 sm:py-20 lg:py-24">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
@@ -22,9 +25,13 @@ export default function HeroSection() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <Button>{heroData.primaryButtonText}</Button>
+            <Button onClick={() => navigate("/dashboard?difficulty=beginner")}>
+              {heroData.primaryButtonText}{" "}
+            </Button>
 
-            <Button variant="secondary">{heroData.secondaryButtonText}</Button>
+            <Button variant="secondary" onClick={() => navigate("/dashboard")}>
+              {heroData.secondaryButtonText}
+            </Button>
           </div>
         </div>
         <div className="overflow-hidden rounded-[28px] border-4 border-white bg-white shadow-xl">
