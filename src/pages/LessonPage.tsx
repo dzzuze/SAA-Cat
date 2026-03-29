@@ -32,58 +32,58 @@ export default function LessonPage() {
       return;
     }
 
-  const fetchLesson = async () => {
-  try {
-    setLoading(true);
-    setError(null);
+    const fetchLesson = async () => {
+      try {
+        setLoading(true);
+        setError(null);
 
-    const [lessonData, lessonsData] = await Promise.all([
-      getLessonById(topicId, lessonId),
-      getLessonsByTopicId(topicId),
-    ]);
+        const [lessonData, lessonsData] = await Promise.all([
+          getLessonById(topicId, lessonId),
+          getLessonsByTopicId(topicId),
+        ]);
 
-    if (!lessonData) {
-      setNotFound(true);
-      return;
-    }
+        if (!lessonData) {
+          setNotFound(true);
+          return;
+        }
 
-    setLesson(lessonData);
-    setLessons(lessonsData);
+        setLesson(lessonData);
+        setLessons(lessonsData);
 
-    if (user?.uid) {
-      const userRef = doc(db, "users", user.uid);
-      const userSnapshot = await getDoc(userRef);
+        if (user?.uid) {
+          const userRef = doc(db, "users", user.uid);
+          const userSnapshot = await getDoc(userRef);
 
-      if (userSnapshot.exists()) {
-        const userData = userSnapshot.data();
-        const completed = Array.isArray(userData.completed)
-          ? userData.completed
-          : [];
+          if (userSnapshot.exists()) {
+            const userData = userSnapshot.data();
+            const completed = Array.isArray(userData.completed)
+              ? userData.completed
+              : [];
 
-        const lessonKeyById = `${topicId}:${lessonId}`;
-        const lessonKeyByTitle = `${topicId}:${lessonData.title}`;
+            const lessonKeyById = `${topicId}:${lessonId}`;
+            const lessonKeyByTitle = `${topicId}:${lessonData.title}`;
 
-        const alreadyCompleted =
-          completed.includes(lessonKeyById) ||
-          completed.includes(lessonKeyByTitle);
+            const alreadyCompleted =
+              completed.includes(lessonKeyById) ||
+              completed.includes(lessonKeyByTitle);
 
-        setIsCompleted(alreadyCompleted);
-      } else {
-        setIsCompleted(false);
+            setIsCompleted(alreadyCompleted);
+          } else {
+            setIsCompleted(false);
+          }
+        } else {
+          setIsCompleted(false);
+        }
+      } catch (err) {
+        console.error(err);
+        setError("Failed to load lesson.");
+      } finally {
+        setLoading(false);
       }
-    } else {
-      setIsCompleted(false);
-    }
-  } catch (err) {
-    console.error(err);
-    setError("Failed to load lesson.");
-  } finally {
-    setLoading(false);
-  }
-};
+    };
 
     void fetchLesson();
-   }, [topicId, lessonId, user?.uid]);
+  }, [topicId, lessonId, user?.uid]);
 
   const handleComplete = async () => {
     if (!user?.uid || !topicId || !lessonId) {
@@ -131,7 +131,8 @@ export default function LessonPage() {
 
   const currentIndex = lessons.findIndex((item) => item.id === lesson.id);
   const prevLesson = currentIndex > 0 ? lessons[currentIndex - 1] : null;
-  const nextLesson = currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : null;
+  const nextLesson =
+    currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : null;
 
   return (
     <section className="px-4 py-10 mt-8 md:py-14">
