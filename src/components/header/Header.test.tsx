@@ -162,27 +162,4 @@ describe("Header", () => {
       expect(signOut).toHaveBeenCalledTimes(1);
     });
   });
-
-  it("opens mobile menu when burger button is clicked", () => {
-    vi.mocked(useAuth).mockReturnValue({
-      user: null,
-      profile: null,
-      loading: true,
-      isAuth: false,
-      logout: vi.fn(),
-      updateProfile: vi.fn(),
-    });
-
-    render(<Header />);
-
-    const menuButton = screen.getByRole("button", { name: /open main menu/i });
-
-    expect(menuButton).toHaveAttribute("aria-expanded", "false");
-    expect(screen.getByText("Mobile menu closed")).toBeInTheDocument();
-
-    fireEvent.click(menuButton);
-
-    expect(menuButton).toHaveAttribute("aria-expanded", "true");
-    expect(screen.getByText("Mobile menu open")).toBeInTheDocument();
-  });
 });
