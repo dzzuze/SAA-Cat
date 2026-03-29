@@ -28,7 +28,7 @@ export default function AboutUsPage() {
     <div className="flex flex-col flex-1 min-h-screen bg-stone-200 pt-8">
       <div className="flex-1 p-10 pb-15">
         <h1 className="text-4xl font-bold text-center mb-5 text-black">
-          Team Members
+          Team👋🐱Members
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {team.map((member, index) => (
