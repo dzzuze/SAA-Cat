@@ -4,4 +4,4 @@ export type Lesson = {
   title: string;
   content: string;
   order: number;
-}
+};

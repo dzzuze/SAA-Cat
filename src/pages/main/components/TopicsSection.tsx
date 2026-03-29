@@ -18,9 +18,10 @@ export default function TopicsSection() {
             </p>
           </div>
 
-         <Link
+          <Link
             to="/topics"
-            className="text-sm font-semibold text-emerald-600 transition-colors duration-200 hover:text-emerald-700">
+            className="text-sm font-semibold text-emerald-600 transition-colors duration-200 hover:text-emerald-700"
+          >
             {topicsSectionData.actionLabel} →
           </Link>
         </div>

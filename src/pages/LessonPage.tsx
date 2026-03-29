@@ -5,6 +5,7 @@ import getLessonById from "../lib/firebase/getLessonById";
 import markLessonCompleted from "../lib/firebase/markLessonCompleted";
 import type { Lesson } from "../types/lesson";
 import { useAuth } from "../auth/useAuth";
+import getLessonsByTopicId from "../lib/firebase/getLessonsByTopicId";
 
 export default function LessonPage() {
   const { topicId, lessonId } = useParams<{
@@ -15,6 +16,7 @@ export default function LessonPage() {
   const { user } = useAuth();
 
   const [lesson, setLesson] = useState<Lesson | null>(null);
+  const [lessons, setLessons] = useState<Lesson[]>([]);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -33,7 +35,10 @@ export default function LessonPage() {
         setLoading(true);
         setError(null);
 
-        const lessonData = await getLessonById(topicId, lessonId);
+        const [lessonData, lessonsData] = await Promise.all([
+          getLessonById(topicId, lessonId),
+          getLessonsByTopicId(topicId),
+        ]);
 
         if (!lessonData) {
           setNotFound(true);
@@ -41,6 +46,7 @@ export default function LessonPage() {
         }
 
         setLesson(lessonData);
+        setLessons(lessonsData);  
       } catch (err) {
         console.error(err);
         setError("Failed to load lesson.");
@@ -96,11 +102,16 @@ export default function LessonPage() {
     return <Navigate to="/404" replace />;
   }
 
+  const currentIndex = lessons.findIndex((item) => item.id === lesson.id);
+  const prevLesson = currentIndex > 0 ? lessons[currentIndex - 1] : null;
+  const nextLesson =
+    currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : null; 
+
   return (
     <section className="px-4 py-10 md:py-14">
       <div className="mx-auto max-w-3xl">
         <Link
-          to={`/topics/${topicId}`}
+          to={`/learn/${topicId}`}
           className="mb-6 inline-block text-sm font-medium text-emerald-600 hover:text-emerald-700"
         >
           ← Back to lessons
@@ -128,8 +139,56 @@ export default function LessonPage() {
                 : "Complete lesson"}
           </button>
 
-          {error ? <p className="text-sm text-red-500">{error}</p> : null}
-        </div>
+          <div className="flex justify-between gap-4">
+    {prevLesson ? (
+      <Link
+        to={`/learn/${topicId}/lessons/${prevLesson.id}`}
+        className="rounded-2xl border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-100"
+      >
+        ← Back
+      </Link>
+    ) : (
+      <Link
+        to={`/learn/${topicId}`}
+        className="rounded-2xl border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-100"
+      >
+        ← Back
+      </Link>
+    )}
+
+    {nextLesson ? (
+      <Link
+        to={`/learn/${topicId}/lessons/${nextLesson.id}`}
+        onClick={(e) => {
+          if (!isCompleted) e.preventDefault();
+        }}
+        className={`rounded-2xl px-6 py-3 font-semibold text-white transition ${
+          isCompleted
+            ? "bg-emerald-600 hover:bg-emerald-700"
+            : "cursor-not-allowed bg-gray-300"
+        }`}
+      >
+        Go on →
+      </Link>
+    ) : (
+      <Link
+        to={`/learn/${topicId}`}
+        onClick={(e) => {
+          if (!isCompleted) e.preventDefault();
+        }}
+        className={`rounded-2xl px-6 py-3 font-semibold transition ${
+          isCompleted
+            ? "bg-emerald-600 text-white hover:bg-emerald-700"
+            : "cursor-not-allowed bg-gray-300 text-gray-500"
+        }`}
+      >
+        Go on →
+      </Link>
+    )}
+  </div>
+
+  {error ? <p className="text-sm text-red-500">{error}</p> : null}
+</div>
       </div>
     </section>
   );

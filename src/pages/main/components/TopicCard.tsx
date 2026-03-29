@@ -44,7 +44,7 @@ export default function TopicCard({ topic, image }: TopicCardProps) {
             <Button variant="secondary" className="w-full">
               Practice
             </Button>
-</Link>
+          </Link>
         </div>
       </div>
     </article>
