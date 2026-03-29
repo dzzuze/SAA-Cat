@@ -1,6 +1,7 @@
 import { topicsSectionData } from "../data/mainPageData";
 import { topicsImages } from "../config/topicsImages";
 import TopicCard from "./TopicCard";
+import { Link } from "react-router-dom";
 
 export default function TopicsSection() {
   return (
@@ -17,12 +18,12 @@ export default function TopicsSection() {
             </p>
           </div>
 
-          <a
-            href="/topics"
+          <Link
+            to="/topics"
             className="text-sm font-semibold text-emerald-600 transition-colors duration-200 hover:text-emerald-700"
           >
             {topicsSectionData.actionLabel} →
-          </a>
+          </Link>
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">

@@ -14,6 +14,9 @@ import RootLayout from "../layouts/RootLayout";
 import AuthGateLayout from "../layouts/AuthGateLayout";
 import ProtectedLayout from "../layouts/ProtectedLayout";
 import ResetPasswordPage from "../pages/ResetPasswordPage";
+import TopicPage from "../pages/TopicPage";
+import LessonPage from "../pages/LessonPage";
+import LessonsPage from "../pages/LessonsPage";
 
 const router = createBrowserRouter(
   [
@@ -36,6 +39,12 @@ const router = createBrowserRouter(
           children: [
             { path: "/user", element: <UserPage /> },
             { path: "/dashboard", element: <Dashboard /> },
+            { path: "/topics/:id", element: <TopicPage /> },
+            { path: "/learn/:topicId", element: <LessonsPage /> },
+            {
+              path: "/learn/:topicId/lessons/:lessonId",
+              element: <LessonPage />,
+            },
           ],
         },
         { path: "/404", element: <NotFound /> },

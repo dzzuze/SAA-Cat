@@ -1,5 +1,6 @@
 import Button from "../../../components/ui/Button";
 import type { TopicItem, TopicLevel } from "../data/mainPageData";
+import { Link } from "react-router-dom";
 
 interface TopicCardProps {
   topic: TopicItem;
@@ -14,7 +15,7 @@ const levelClasses: Record<TopicLevel, string> = {
 
 export default function TopicCard({ topic, image }: TopicCardProps) {
   return (
-    <article className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition-transform duration-200 hover:-translate-y-1">
+    <article className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition-transform duration-200 hover:-translate-y-1 cursor-pointer">
       <div className="aspect-[8/9] w-full overflow-hidden bg-slate-100">
         <img
           src={image}
@@ -39,9 +40,11 @@ export default function TopicCard({ topic, image }: TopicCardProps) {
         </p>
 
         <div className="mt-6">
-          <Button variant="secondary" className="w-full cursor-pointer">
-            Practice
-          </Button>
+          <Link to={`/learn/${topic.id}`} className="block">
+            <Button variant="secondary" className="w-full">
+              Practice
+            </Button>
+          </Link>
         </div>
       </div>
     </article>

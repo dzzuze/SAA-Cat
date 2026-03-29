@@ -63,9 +63,7 @@ export default function Header() {
 
   const desktopLinks = useMemo(() => {
     if (loading) return baseLinks;
-    return isAuthed
-      ? [...baseLinks, ...authedLinks]
-      : [...baseLinks, ...guestLinks];
+    return isAuthed ? [...authedLinks] : [...baseLinks, ...guestLinks];
   }, [loading, isAuthed]);
 
   const mobileLinks = useMemo(() => {
