@@ -130,9 +130,17 @@ export default function Dashboard() {
 
               <h3 className="text-lg font-semibold mb-1">{topic.title}</h3>
 
-              <p className="text-sm text-gray-500 capitalize">
-                Difficulty: {topic.difficulty}
-              </p>
+              <span
+                className={`px-2 py-1 text-xs rounded-full font-semibold ${
+                  topic.difficulty === "beginner"
+                    ? "bg-green-100 text-green-700"
+                    : topic.difficulty === "intermediate"
+                      ? "bg-yellow-100 text-yellow-700"
+                      : "bg-red-100 text-red-700"
+                }`}
+              >
+                {topic.difficulty}
+              </span>
             </Link>
           ))}
         </div>
