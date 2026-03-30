@@ -9,6 +9,7 @@ import WatchingCat from "../../assets/watching-cat.svg?react";
 import HeaderBrand from "./HeaderBrand";
 import HeaderUserMenu from "./HeaderUserMenu";
 import HeaderNavLinks from "./HeaderNavLinks";
+import { ThemeSwitcher } from "../ui/ThemeSwitcher";
 
 import { authedLinks, baseLinks, guestLinks } from "./headerLinks";
 
@@ -58,10 +59,14 @@ export default function Header() {
   }, [loading, isAuthed]);
 
   return (
-    <nav className="fixed top-0 z-20 w-full bg-[#3d3d3d]">
+    <nav className="fixed top-0 z-20 w-full border-b border-border-soft bg-surface text-text-primary transition-colors duration-300">
       <div className="mx-auto flex flex-wrap justify-between px-4 py-0">
-        <HeaderBrand onNavigate={closeAll} />
-
+        <div className="flex items-center gap-5">
+  <HeaderBrand onNavigate={closeAll} />
+  <div className="mt-1">
+    <ThemeSwitcher />
+  </div>
+</div>
         <div className="flex items-center gap-3 md:order-2">
           {showAuthedUI && user && (
             <HeaderUserMenu
@@ -75,7 +80,7 @@ export default function Header() {
           )}
 
           {loading && (
-            <div className="text-sm font-medium text-gray-700">Loading…</div>
+            <div className="text-sm font-medium text-text-muted">Loading…</div>
           )}
         </div>
 
@@ -91,6 +96,8 @@ export default function Header() {
             <WatchingCat className="h-18 w-18" aria-hidden />
           </div>
         </div>
+        <div className="absolute right-2 top-1/2 -translate-y-1/2 md:right-35">
+</div>
       </div>
     </nav>
   );

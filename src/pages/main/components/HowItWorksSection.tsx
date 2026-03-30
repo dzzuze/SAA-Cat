@@ -11,14 +11,14 @@ const iconsById = {
 
 export default function HowItWorksSection() {
   return (
-    <section className="bg-white py-16 sm:py-20">
+    <section className="bg-app py-16 sm:py-20 transition-colors duration-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          <h2 className="text-3xl font-extrabold tracking-tight text-text-primary sm:text-4xl">
             {howItWorksData.title}
           </h2>
 
-          <p className="mt-4 text-sm leading-6 text-slate-600 sm:text-base">
+          <p className="mt-4 text-sm leading-6 text-text-muted sm:text-base">
             {howItWorksData.description}
           </p>
         </div>
@@ -30,21 +30,21 @@ export default function HowItWorksSection() {
             return (
               <article
                 key={item.id}
-                className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-transform duration-200 hover:-translate-y-1"
+                className="rounded-3xl border border-border-soft bg-surface p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
               >
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-50">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-surface-muted">
                   <Icon
-                    className="h-46 w-46 text-slate-900"
+                    className="h-20 w-20 text-text-primary"
                     aria-hidden="true"
                     focusable="false"
                   />
                 </div>
 
-                <h3 className="text-lg font-bold text-slate-900">
+                <h3 className="text-lg font-bold text-text-primary">
                   {item.title}
                 </h3>
 
-                <p className="mt-3 text-sm leading-6 text-slate-600">
+                <p className="mt-3 text-sm leading-6 text-text-muted">
                   {item.description}
                 </p>
               </article>

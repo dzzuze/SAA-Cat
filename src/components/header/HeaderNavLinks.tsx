@@ -18,10 +18,15 @@ export default function HeaderNavLinks({
 }: Props) {
   const navLinkClass = ({ isActive }: NavLinkArgs) =>
     [
-      "relative block px-4 py-2 text-sm font-bold transition-all duration-300 ease-out active:scale-95 text-white group",
+      "group relative block px-4 py-2 text-sm font-bold transition-all duration-300 ease-out active:scale-95",
+      "text-text-primary",
       linkClassName,
+
       "after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-main-yellow after:transition-all after:duration-300",
-      isActive ? "after:w-full" : "after:w-0 hover:after:w-full after:bg-white",
+
+      isActive
+        ? "after:w-full"
+        : "after:w-0 group-hover:after:w-full",
     ].join(" ");
 
   return (

@@ -85,28 +85,26 @@ export default function CompletedLessonsCard() {
   );
 
   return (
-    <div className="w-full max-w-md rounded-2xl border border-zinc-800 bg-[#0f0f11] p-6 shadow-2xl sm:p-8">
+    <div className="w-full max-w-md rounded-2xl border border-border-soft bg-surface p-6 shadow-2xl transition-colors duration-300 sm:p-8">
       <div className="mb-6">
-        <h2 className="text-2xl font-black tracking-tight sm:text-3xl">
+        <h2 className="text-2xl font-black tracking-tight text-text-primary sm:text-3xl">
           Completed <span className="text-main-yellow">lessons</span>
         </h2>
-        <p className="mt-1 text-sm text-zinc-400">
-          Your learning progress
-        </p>
+        <p className="mt-1 text-sm text-text-muted">Your learning progress</p>
       </div>
 
       {!user && (
-        <p className="text-sm text-zinc-400">
+        <p className="text-sm text-text-muted">
           Sign in to see your completed lessons.
         </p>
       )}
 
       {user && isCompletedLoading && (
-        <p className="text-sm text-zinc-400">Loading completed lessons...</p>
+        <p className="text-sm text-text-muted">Loading completed lessons...</p>
       )}
 
       {user && !isCompletedLoading && completedError && (
-        <p className="text-sm text-red-400">{completedError}</p>
+        <p className="text-sm text-red-500">{completedError}</p>
       )}
 
       {user &&
@@ -114,7 +112,7 @@ export default function CompletedLessonsCard() {
         !completedError &&
         completedLessons &&
         completedLessons.length === 0 && (
-          <p className="text-sm text-zinc-400">
+          <p className="text-sm text-text-muted">
             You have not completed any lessons yet.
           </p>
         )}
@@ -125,8 +123,8 @@ export default function CompletedLessonsCard() {
         completedLessons &&
         completedLessons.length > 0 && (
           <div className="space-y-5">
-            <div className="rounded-xl border border-zinc-800 bg-[#18181b] p-4">
-              <p className="text-sm text-zinc-400">Total completed</p>
+            <div className="rounded-xl border border-border-soft bg-surface-muted p-4">
+              <p className="text-sm text-text-muted">Total completed</p>
               <p className="mt-1 text-3xl font-black text-main-yellow">
                 {completedLessons.length}
               </p>
@@ -136,7 +134,7 @@ export default function CompletedLessonsCard() {
               {groupedTopics.map(([topic, lessons]) => (
                 <div
                   key={topic}
-                  className="rounded-xl border border-zinc-800 bg-[#18181b] p-4"
+                  className="rounded-xl border border-border-soft bg-surface-muted p-4"
                 >
                   <p className="mb-3 text-xs font-bold uppercase tracking-wider text-main-yellow">
                     {formatTopicName(topic)}
@@ -146,7 +144,7 @@ export default function CompletedLessonsCard() {
                     {lessons.map((lesson) => (
                       <li
                         key={`${topic}-${lesson}`}
-                        className="rounded-lg bg-[#101014] px-3 py-2 text-sm text-white"
+                        className="rounded-lg bg-app px-3 py-2 text-sm text-text-primary"
                       >
                         {formatLessonName(lesson)}
                       </li>
