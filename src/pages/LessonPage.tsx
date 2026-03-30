@@ -1,53 +1,50 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import MarkdownRenderer from "../components/ui/MarkdownRenderer";
-import getLessonById from "../lib/firebase/getLessonById";
-import markLessonCompleted from "../lib/firebase/markLessonCompleted";
-import type { Lesson } from "../types/lesson";
-import { useAuth } from "../auth/useAuth";
-import getLessonsByTopicId from "../lib/firebase/getLessonsByTopicId";
 import { doc, getDoc } from "firebase/firestore";
+
+import { useAuth } from "../auth/useAuth";
+import getTopicById from "../lib/firebase/getTopicById";
+import getLessonsByTopicId from "../lib/firebase/getLessonsByTopicId";
 import { db } from "../lib/firebase/firebase";
 
-export default function LessonPage() {
-  const { topicId, lessonId } = useParams<{
-    topicId: string;
-    lessonId: string;
-  }>();
+import type { Topic } from "../types/topic";
+import type { Lesson } from "../types/lesson";
 
+export default function LessonsPage() {
+  const { topicId } = useParams<{ topicId: string }>();
   const { user } = useAuth();
 
-  const [lesson, setLesson] = useState<Lesson | null>(null);
+  const [topic, setTopic] = useState<Topic | null>(null);
   const [lessons, setLessons] = useState<Lesson[]>([]);
+  const [completed, setCompleted] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [isCompleting, setIsCompleting] = useState(false);
-  const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
-    if (!topicId || !lessonId) {
+    if (!topicId) {
       setNotFound(true);
       setLoading(false);
       return;
     }
 
-    const fetchLesson = async () => {
+    const fetchData = async () => {
       try {
         setLoading(true);
         setError(null);
+        setNotFound(false);
 
-        const [lessonData, lessonsData] = await Promise.all([
-          getLessonById(topicId, lessonId),
+        const [topicData, lessonsData] = await Promise.all([
+          getTopicById(topicId),
           getLessonsByTopicId(topicId),
         ]);
 
-        if (!lessonData) {
+        if (!topicData) {
           setNotFound(true);
           return;
         }
 
-        setLesson(lessonData);
+        setTopic(topicData);
         setLessons(lessonsData);
 
         if (user?.uid) {
@@ -56,166 +53,151 @@ export default function LessonPage() {
 
           if (userSnapshot.exists()) {
             const userData = userSnapshot.data();
-            const completed = Array.isArray(userData.completed)
+            const completedLessons = Array.isArray(userData.completed)
               ? userData.completed
               : [];
 
-            const lessonKeyById = `${topicId}:${lessonId}`;
-            const lessonKeyByTitle = `${topicId}:${lessonData.title}`;
-
-            const alreadyCompleted =
-              completed.includes(lessonKeyById) ||
-              completed.includes(lessonKeyByTitle);
-
-            setIsCompleted(alreadyCompleted);
+            setCompleted(completedLessons);
           } else {
-            setIsCompleted(false);
+            setCompleted([]);
           }
         } else {
-          setIsCompleted(false);
+          setCompleted([]);
         }
       } catch (err) {
         console.error(err);
-        setError("Failed to load lesson.");
+        setError("Failed to load lessons.");
       } finally {
         setLoading(false);
       }
     };
 
-    void fetchLesson();
-  }, [topicId, lessonId, user?.uid]);
+    void fetchData();
+  }, [topicId, user?.uid]);
 
-  const handleComplete = async () => {
-    if (!user?.uid || !topicId || !lessonId) {
-      return;
-    }
-
-    try {
-      setIsCompleting(true);
-
-      const lessonKey = `${topicId}:${lessonId}`;
-      await markLessonCompleted(user.uid, lessonKey);
-
-      setIsCompleted(true);
-    } catch (err) {
-      console.error(err);
-      setError("Failed to save completion.");
-    } finally {
-      setIsCompleting(false);
-    }
-  };
+  const completionSet = useMemo(() => new Set(completed), [completed]);
 
   if (loading) {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center">
-        Loading lesson...
+      <div className="flex min-h-[60vh] items-center justify-center bg-app px-4 text-text-primary transition-colors duration-300">
+        <p className="text-sm text-text-muted">Loading lessons...</p>
       </div>
     );
   }
 
-  if (notFound) {
+  if (notFound || !topicId) {
     return <Navigate to="/404" replace />;
   }
 
-  if (error && !lesson) {
+  if (error) {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center text-red-500">
-        {error}
+      <div className="flex min-h-[60vh] items-center justify-center bg-app px-4 text-text-primary transition-colors duration-300">
+        <p className="text-sm text-red-500">{error}</p>
       </div>
     );
   }
 
-  if (!lesson || !topicId) {
+  if (!topic) {
     return <Navigate to="/404" replace />;
   }
 
-  const currentIndex = lessons.findIndex((item) => item.id === lesson.id);
-  const prevLesson = currentIndex > 0 ? lessons[currentIndex - 1] : null;
-  const nextLesson =
-    currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : null;
+  const isLessonCompleted = (lesson: Lesson) => {
+    const byId = `${topicId}:${lesson.id}`;
+    const legacyByTitle = `${topicId}:${lesson.title}`;
+
+    return completionSet.has(byId) || completionSet.has(legacyByTitle);
+  };
+
+  const isLessonUnlocked = (lesson: Lesson, index: number) => {
+    if (index === 0) return true;
+    if (isLessonCompleted(lesson)) return true;
+
+    const previousLesson = lessons[index - 1];
+    if (!previousLesson) return false;
+
+    return isLessonCompleted(previousLesson);
+  };
 
   return (
-    <section className="px-4 py-10 mt-8 md:py-14">
-      <div className="mx-auto max-w-3xl">
+    <section className="mt-8 flex-1 bg-app px-4 py-10 text-text-primary transition-colors duration-300 md:py-14">
+      <div className="mx-auto max-w-4xl">
         <Link
-          to={`/learn/${topicId}`}
-          className="mb-6 inline-block text-sm font-medium text-emerald-600 hover:text-emerald-700"
+          to="/"
+          className="mb-6 inline-block text-sm font-medium text-main-yellow transition-opacity hover:opacity-80"
         >
-          ← Back to lessons
+          ← Back
         </Link>
 
-        <h1 className="mb-8 text-4xl font-bold text-slate-900">
-          {lesson.title}
-        </h1>
+        <header className="mb-10">
+          <h1 className="mb-3 text-4xl font-bold text-text-primary">
+            {topic.title}
+          </h1>
+          <p className="text-sm font-medium text-text-muted">
+            Difficulty: {topic.difficulty}
+          </p>
+        </header>
 
-        <article className="rounded-3xl bg-white p-6 shadow-sm">
-          <MarkdownRenderer content={lesson.content} />
-        </article>
-
-        <div className="mt-8 flex flex-col gap-4">
-          <button
-            type="button"
-            onClick={handleComplete}
-            disabled={isCompleting || isCompleted}
-            className="rounded-2xl bg-emerald-600 px-6 py-3 font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            {isCompleted
-              ? "Completed"
-              : isCompleting
-                ? "Saving..."
-                : "Complete lesson"}
-          </button>
-
-          <div className="flex justify-between gap-4">
-            {prevLesson ? (
-              <Link
-                to={`/learn/${topicId}/lessons/${prevLesson.id}`}
-                className="rounded-2xl border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-100"
-              >
-                ← Back
-              </Link>
-            ) : (
-              <Link
-                to={`/learn/${topicId}`}
-                className="rounded-2xl border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-100"
-              >
-                ← Back
-              </Link>
-            )}
-
-            {nextLesson ? (
-              <Link
-                to={`/learn/${topicId}/lessons/${nextLesson.id}`}
-                onClick={(e) => {
-                  if (!isCompleted) e.preventDefault();
-                }}
-                className={`rounded-2xl px-6 py-3 font-semibold text-white transition ${
-                  isCompleted
-                    ? "bg-emerald-600 hover:bg-emerald-700"
-                    : "cursor-not-allowed bg-gray-300"
-                }`}
-              >
-                Go on →
-              </Link>
-            ) : (
-              <Link
-                to={`/learn/${topicId}`}
-                onClick={(e) => {
-                  if (!isCompleted) e.preventDefault();
-                }}
-                className={`rounded-2xl px-6 py-3 font-semibold transition ${
-                  isCompleted
-                    ? "bg-emerald-600 text-white hover:bg-emerald-700"
-                    : "cursor-not-allowed bg-gray-300 text-gray-500"
-                }`}
-              >
-                Go on →
-              </Link>
-            )}
+        {lessons.length === 0 ? (
+          <div className="rounded-2xl border border-border-soft bg-surface p-6 text-text-muted shadow-sm">
+            No lessons yet.
           </div>
+        ) : (
+          <div className="space-y-4">
+            {lessons.map((lesson, index) => {
+              const unlocked = isLessonUnlocked(lesson, index);
+              const completedLesson = isLessonCompleted(lesson);
 
-          {error ? <p className="text-sm text-red-500">{error}</p> : null}
-        </div>
+              if (!unlocked) {
+                return (
+                  <div
+                    key={lesson.id}
+                    className="cursor-not-allowed rounded-2xl border border-border-soft bg-surface-muted p-5 opacity-70"
+                  >
+                    <div className="flex items-center justify-between gap-4">
+                      <div>
+                        <p className="mb-1 text-sm text-text-muted">
+                          Lesson {index + 1}
+                        </p>
+
+                        <h2 className="text-xl font-semibold text-text-muted">
+                          {lesson.title}
+                        </h2>
+                      </div>
+
+                      <span className="text-sm font-medium text-text-muted">
+                        Locked
+                      </span>
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
+                <Link
+                  key={lesson.id}
+                  to={`/learn/${topicId}/lessons/${lesson.id}`}
+                  className="block rounded-2xl border border-border-soft bg-surface p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-main-yellow hover:shadow-md"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <p className="mb-1 text-sm text-text-muted">
+                        Lesson {index + 1}
+                      </p>
+
+                      <h2 className="text-xl font-semibold text-text-primary">
+                        {lesson.title}
+                      </h2>
+                    </div>
+
+                    <span className="text-sm font-medium text-main-yellow">
+                      {completedLesson ? "Completed" : "Open →"}
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        )}
       </div>
     </section>
   );
