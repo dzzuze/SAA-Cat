@@ -16,9 +16,7 @@ export default function HeroSection() {
 
           <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight text-text-primary sm:text-5xl lg:text-6xl">
             {heroData.titleStart}{" "}
-            <span className="text-main-yellow">
-              {heroData.titleHighlight}
-            </span>{" "}
+            <span className="text-main-yellow">{heroData.titleHighlight}</span>{" "}
             {heroData.titleEnd}
           </h1>
 

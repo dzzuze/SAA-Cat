@@ -49,9 +49,7 @@ export default function AboutUsPage() {
                 <h3 className="mb-4 text-xl font-bold text-text-primary">
                   {member.name}
                   <br />
-                  <span
-                    className="inline-block bg-gradient-to-r from-[#1e40af] via-[#7e22ce] to-[#be185d] bg-[length:200%_auto] bg-clip-text text-transparent animate-gradient"
-                  >
+                  <span className="inline-block bg-gradient-to-r from-[#1e40af] via-[#7e22ce] to-[#be185d] bg-[length:200%_auto] bg-clip-text text-transparent animate-gradient">
                     {member.nick}
                   </span>
                 </h3>

@@ -24,9 +24,7 @@ export default function HeaderNavLinks({
 
       "after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-main-yellow after:transition-all after:duration-300",
 
-      isActive
-        ? "after:w-full"
-        : "after:w-0 group-hover:after:w-full",
+      isActive ? "after:w-full" : "after:w-0 group-hover:after:w-full",
     ].join(" ");
 
   return (

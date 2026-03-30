@@ -62,11 +62,11 @@ export default function Header() {
     <nav className="fixed top-0 z-20 w-full border-b border-border-soft bg-surface text-text-primary transition-colors duration-300">
       <div className="mx-auto flex flex-wrap justify-between px-4 py-0">
         <div className="flex items-center gap-5">
-  <HeaderBrand onNavigate={closeAll} />
-  <div className="mt-1">
-    <ThemeSwitcher />
-  </div>
-</div>
+          <HeaderBrand onNavigate={closeAll} />
+          <div className="mt-1">
+            <ThemeSwitcher />
+          </div>
+        </div>
         <div className="flex items-center gap-3 md:order-2">
           {showAuthedUI && user && (
             <HeaderUserMenu
@@ -96,8 +96,7 @@ export default function Header() {
             <WatchingCat className="h-18 w-18" aria-hidden />
           </div>
         </div>
-        <div className="absolute right-2 top-1/2 -translate-y-1/2 md:right-35">
-</div>
+        <div className="absolute right-2 top-1/2 -translate-y-1/2 md:right-35"></div>
       </div>
     </nav>
   );

@@ -144,14 +144,10 @@
     "imageUrl": ""
   },
   {
-    
     "order": 0,
-    "difficultyintermediate" : "beginner",
+    "difficultyintermediate": "beginner",
     "title": "Web Performance Optimization (Lighthouse, Code Splitting, Caching)",
     "content": "Definition:\nWeb performance optimization focuses on improving the speed and responsiveness of web applications. Faster load times enhance user experience and can positively impact SEO rankings.\n\nLighthouse:\nLighthouse is an open-source tool by Google for auditing web performance, accessibility, and best practices.\n\nFeatures:\n- Performance score\n- Accessibility score\n- Best practices score\n- SEO score\n\nHow to use:\n1. Open Chrome DevTools\n2. Go to the Lighthouse tab\n3. Run an audit on the current page\n\nCode Splitting:\nCode splitting is a technique to break down JavaScript bundles into smaller chunks that can be loaded on demand.\n\nBenefits:\n- Reduces initial load time\n- Improves performance for large applications\n\nExample with Webpack:\nentry: {\n  main: './src/index.js'\n},\noutput: {\n  filename: '[name].bundle.js',\n  chunkFilename: '[name].chunk.js'\n},\noptimization: {\n  splitChunks: {\n    chunks: 'all'\n  }\n}\n\nCaching Strategies:\nCaching improves performance by storing resources locally to avoid unnecessary network requests.\n\nTypes of caching:\n- Browser caching → controlled by HTTP headers (Cache-Control)\n- Service Worker caching → allows offline capabilities and fine-grained control over caching logic\n\nExample of Cache-Control header:\nCache-Control: max-age=3600, public\n\nImportant Notes:\n- Use Lighthouse to identify performance bottlenecks\n- Implement code splitting for large applications to improve load times\n- Proper caching strategies can significantly enhance user experience by reducing latency and enabling offline access.\n\nSummary (Interview Answer):\nWeb performance optimization involves using tools like Lighthouse to audit and improve application speed. Code splitting breaks down JavaScript into smaller chunks for faster loading, while caching strategies reduce network requests and enable offline capabilities. Together, these techniques enhance user experience and improve application efficiency.",
     "imageUrl": ""
-   }
-
+  }
 ]
-
-

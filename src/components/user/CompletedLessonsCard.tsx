@@ -37,7 +37,9 @@ function groupLessonsByTopic(lessons: string[]) {
 export default function CompletedLessonsCard() {
   const { user } = useAuth();
 
-  const [completedLessons, setCompletedLessons] = useState<string[] | null>(null);
+  const [completedLessons, setCompletedLessons] = useState<string[] | null>(
+    null,
+  );
   const [completedError, setCompletedError] = useState("");
 
   useEffect(() => {
@@ -80,8 +82,8 @@ export default function CompletedLessonsCard() {
     ? groupLessonsByTopic(completedLessons)
     : {};
 
-  const groupedTopics = Object.entries(groupedLessons).sort(([topicA], [topicB]) =>
-    topicA.localeCompare(topicB),
+  const groupedTopics = Object.entries(groupedLessons).sort(
+    ([topicA], [topicB]) => topicA.localeCompare(topicB),
   );
 
   return (
