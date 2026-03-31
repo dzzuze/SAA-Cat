@@ -15,6 +15,6 @@ export const guestLinks: HeaderLink[] = [
 ];
 
 export const authedLinks: HeaderLink[] = [
-  { to: "/dashboard", label: "Dashboard" },
+  { to: "/dashboard", label: "Library" },
   { to: "/user", label: "Profile" },
 ];
