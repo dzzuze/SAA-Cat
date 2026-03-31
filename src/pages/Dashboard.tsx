@@ -96,7 +96,7 @@ export default function Dashboard() {
   return (
     <div className="mx-auto flex-1 max-w-5xl bg-app px-4 py-24 text-text-primary transition-colors duration-300">
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-3xl font-bold text-text-primary">Dashboard</h1>
+        <h1 className="text-3xl font-bold text-text-primary">Library</h1>
 
         <div className="flex flex-wrap gap-2">
           {filters.map((filter) => (
