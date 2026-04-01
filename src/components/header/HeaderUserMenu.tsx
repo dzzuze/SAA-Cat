@@ -51,16 +51,16 @@ export default function HeaderUserMenu({
     }
     `}
       >
-        <div className="border-b px-4 py-3 text-sm">
-          <span className="block font-medium">
+        <div className="border-b bg-app-surface-dark border-border-soft px-4 py-3 text-sm">
+          <span className="block font-medium text-white">
             {user?.displayName || "Cat Lover"}
           </span>
-          <span className="block truncate text-xs text-gray-500">
+          <span className="block truncate text-xs text-white">
             {user.email}
           </span>
         </div>
 
-        <ul className="p-2 text-sm font-medium text-gray-800">
+        <ul className="p-2 text-sm bg-surface font-medium text-text-primary">
           {links.map((l) => (
             <li key={l.to}>
               <NavLink
