@@ -1,5 +1,6 @@
 import HeroSection from "./components/HeroSection";
 import HowItWorksSection from "./components/HowItWorksSection";
+import QuizPromoSection from "./components/QuizPromoSection";
 import TopicsSection from "./components/TopicsSection";
 
 export default function MainPage() {
@@ -8,6 +9,7 @@ export default function MainPage() {
       <HeroSection />
       <HowItWorksSection />
       <TopicsSection />
+      <QuizPromoSection />
     </main>
   );
 }

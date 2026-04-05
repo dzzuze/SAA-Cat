@@ -17,6 +17,7 @@ import ResetPasswordPage from "../pages/ResetPasswordPage";
 import TopicPage from "../pages/TopicPage";
 import LessonPage from "../pages/LessonPage";
 import LessonsPage from "../pages/LessonsPage";
+import QuizPage from "../pages/QuizPage";
 
 const router = createBrowserRouter(
   [
@@ -45,6 +46,10 @@ const router = createBrowserRouter(
               path: "/learn/:topicId/lessons/:lessonId",
               element: <LessonPage />,
             },
+            {
+              path: "/quiz/:quizId",
+              element: <QuizPage />,
+            }
           ],
         },
         { path: "/404", element: <NotFound /> },
