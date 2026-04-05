@@ -78,13 +78,13 @@ export default function QuizPromoSection() {
                 </Link>
 
                 <Link
-                  to={`/topics/${quiz.topicId}`}
+                  to={`/learn/core-javascript`}
                   className="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-slate-100 px-6 py-3 text-base font-semibold text-main-dark transition hover:bg-slate-200 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
                 >
                   Read topic first
                 </Link>
               </div>
-              <CatsLine className="absolute bottom-0 -left-[30%] w-full h-20 md:h-32 lg:h-40 opacity-30 dark:opacity-60 pointer-events-none" />
+              <CatsLine className="absolute bottom-0 -left-[30%] w-full h-20 md:h-32 lg:h-40 dark:opacity-60 pointer-events-none" />
             </div>
             <div className="relative">
               <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-5 shadow-sm transition-colors dark:border-white/10 dark:bg-white/5 dark:backdrop-blur-sm">
