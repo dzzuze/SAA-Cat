@@ -88,7 +88,7 @@ export default function Header() {
           <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 md:flex">
             <HeaderNavLinks
               links={desktopLinks}
-              className="flex items-center gap-8 font-medium"
+              className="flex items-center gap-4 md:gap-3 lg:gap-6 font-medium"
             />
           </div>
 

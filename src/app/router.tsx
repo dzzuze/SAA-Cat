@@ -49,7 +49,7 @@ const router = createBrowserRouter(
             {
               path: "/quiz/:quizId",
               element: <QuizPage />,
-            }
+            },
           ],
         },
         { path: "/404", element: <NotFound /> },

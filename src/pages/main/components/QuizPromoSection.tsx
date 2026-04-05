@@ -6,7 +6,6 @@ import CatsIcon from "../../../assets/books-cat.svg?react";
 import CatsLine from "../../../assets/curious-kittens.svg?react";
 import StrechingCat from "../../../assets/streching-cat.svg?react";
 
-
 export default function QuizPromoSection() {
   const [quiz, setQuiz] = useState<Quiz | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -53,7 +52,7 @@ export default function QuizPromoSection() {
             🐾
           </div>
           <div className="absolute right-10 bottom-4 text-5xl opacity-20 md:text-7xl dark:opacity-30">
-           🐾
+            🐾
           </div>
 
           <div className="relative z-10 grid items-center gap-10 md:grid-cols-2">
@@ -85,7 +84,7 @@ export default function QuizPromoSection() {
                   Read topic first
                 </Link>
               </div>
-            <CatsLine className="absolute bottom-0 -left-[30%] w-full h-20 md:h-32 lg:h-40 opacity-30 dark:opacity-60 pointer-events-none"/>
+              <CatsLine className="absolute bottom-0 -left-[30%] w-full h-20 md:h-32 lg:h-40 opacity-30 dark:opacity-60 pointer-events-none" />
             </div>
             <div className="relative">
               <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-5 shadow-sm transition-colors dark:border-white/10 dark:bg-white/5 dark:backdrop-blur-sm">
@@ -95,7 +94,7 @@ export default function QuizPromoSection() {
                       SAA-CAT Challenge
                     </span>
                     <span className="text-2xl">
-                     <StrechingCat className="h-32 w-32" />
+                      <StrechingCat className="h-32 w-32" />
                     </span>
                   </div>
 

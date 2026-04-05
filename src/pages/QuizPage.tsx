@@ -1,10 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import {
-  getQuizById,
-  getQuizQuestions,
-} from "../lib/firebase/quizzes";
+import { getQuizById, getQuizQuestions } from "../lib/firebase/quizzes";
 import type { Quiz, QuizQuestion } from "../types/quiz";
 
 export default function QuizPage(): React.JSX.Element {
@@ -117,7 +114,7 @@ export default function QuizPage(): React.JSX.Element {
     const passed = score >= quiz.passingScore;
 
     return (
-      <section className="flex-1 mx-auto max-w-3xl px-4 py-10">
+      <section className="flex-1 max-w-3xl px-4 py-10">
         <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-neutral-900">
           <h1 className="text-3xl font-bold text-main-dark dark:text-white">
             {quiz.title}
@@ -178,7 +175,7 @@ export default function QuizPage(): React.JSX.Element {
   }
 
   return (
-    <section className="flex-1 mx-auto max-w-3xl px-4 py-10">
+    <section className="flex-1 mt-6 mx-auto max-w-3xl px-4 py-10">
       <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-neutral-900">
         <p className="text-sm text-gray-500 dark:text-gray-400">
           Question {currentQuestionIndex + 1} of {questions.length}

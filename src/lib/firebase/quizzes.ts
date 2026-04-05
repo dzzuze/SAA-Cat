@@ -8,7 +8,7 @@ import {
   where,
 } from "firebase/firestore";
 
-import { db } from "../firebase/firebase"; 
+import { db } from "../firebase/firebase";
 import type { Quiz, QuizQuestion } from "../../types/quiz";
 
 export async function getQuizzesByTopicId(topicId: string): Promise<Quiz[]> {
@@ -43,7 +43,9 @@ export async function getQuizById(quizId: string): Promise<Quiz> {
   };
 }
 
-export async function getQuizQuestions(quizId: string): Promise<QuizQuestion[]> {
+export async function getQuizQuestions(
+  quizId: string,
+): Promise<QuizQuestion[]> {
   const questionsRef = collection(db, "quizQuestions");
 
   const questionsQuery = query(

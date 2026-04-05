@@ -28,9 +28,7 @@ export default function QuizSection({ quizzes }: Props) {
               {quiz.description}
             </p>
 
-            <p className="mt-2 text-sm">
-              {quiz.questionsCount} questions
-            </p>
+            <p className="mt-2 text-sm">{quiz.questionsCount} questions</p>
 
             <Link
               to={`/quiz/${quiz.id}`}
