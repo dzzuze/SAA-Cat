@@ -1,8 +1,8 @@
 # Self-Assessment
 
-**PR с self-assessment:** ()
+**PR с self-assessment:** (https://github.com/dzzuze/SAA-Cat/pull/68)
 
----
+## Deploy (https://dzzuze.github.io/SAA-Cat/)
 
 ## 📊 Personal Features Score
 
