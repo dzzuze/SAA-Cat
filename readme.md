@@ -278,11 +278,12 @@ Here are some of the most meaningful pull requests in the project, each with sub
 Each of these PRs includes meaningful discussion, review feedback, and decisions that helped improve the quality of the project.
 
 ---
-## Development Notes & Self-Assessment
+##  Development Notes & Self-Assessment
 
-- Sergey (sidoryakasergey): [notes] (https://github.com/dzzuze/SAA-Cat/tree/main/development-notes/SidoryakaSergey) | [self-assessment] (https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/SidoryakaSergey/self-assessment.md) 
-- Anna (AnnaDzig):          [notes] (https://github.com/dzzuze/SAA-Cat/tree/main/development-notes/AnnaDzig)| [self-assessment](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/AnnaDzig/self-assessment.md)   
-- Artem (dzzuze):           [notes] (https://github.com/dzzuze/SAA-Cat/tree/main/development-notes/dzzuze)| [self-assessment] (https://github.com/dzzuze/SAA-Cat/tree/main/development-notes/dzzuze/self-assessment.md)  
+- Sergey (sidoryakasergey): [notes](https://github.com/dzzuze/SAA-Cat/tree/main/development-notes/SidoryakaSergey) | [self-assessment](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/SidoryakaSergey/self-assessment.md)
+- Anna (AnnaDzig): [notes](https://github.com/dzzuze/SAA-Cat/tree/main/development-notes/AnnaDzig) | [self-assessment](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/AnnaDzig/self-assessment.md)
+- Artem (dzzuze): [notes](https://github.com/dzzuze/SAA-Cat/tree/main/development-notes/dzzuze) | [self-assessment](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/dzzuze/self-assessment.md)
+
 ---
 
 ## Meeting Notes
