@@ -130,7 +130,7 @@ You can view our project board here:
 
 ### Board Screenshot
 
-![Project Board Screenshot]()
+![Project Board Screenshot](<img width="1244" height="1225" alt="Screenshot 2026-04-06 at 10 29 11" src="https://github.com/user-attachments/assets/470634cf-b57a-46fb-8d77-5fc0eba9ee2a" />)
 
 _Learning can be serious and cute at the same time._
 
