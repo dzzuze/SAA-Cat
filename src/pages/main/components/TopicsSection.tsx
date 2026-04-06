@@ -19,7 +19,7 @@ export default function TopicsSection() {
           </div>
 
           <Link
-            to="/topics"
+            to="/dashboard"
             className="text-sm font-semibold text-main-yellow transition-colors duration-200 hover:opacity-80"
           >
             {topicsSectionData.actionLabel} →
