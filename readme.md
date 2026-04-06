@@ -122,6 +122,15 @@ The app will be available at:
 [Video for Week 5 Checkpoint](https://www.youtube.com/watch?v=7-F7fzZgQK8)
 
 ---
+## Project Board
+
+You can view our project board here:
+
+[ https://your-board-link.com](https://github.com/dzzuze/SAA-Cat/issues?q=is%3Aissue%20state%3Aclosed)
+
+### Board Screenshot
+
+![Project Board Screenshot]([./assets/board-screenshot.png](https://github.com/dzzuze/SAA-Cat/issues?q=is%3Aissue%20state%3Aclosed))
 
 _Learning can be serious and cute at the same time._
 
