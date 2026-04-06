@@ -68,6 +68,55 @@ https://dzzuze.github.io/SAA-Cat/
 
 ---
 
+## Run Locally
+
+Follow these steps to run the project on your local machine:
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/dzzuze/SAA-Cat.git
+```
+
+### 2. Navigate to the project folder
+
+```bash
+cd SAA-Cat
+```
+
+### 3. Install dependencies
+
+```bash
+npm install
+```
+
+### 4. Create environment variables
+
+Create a `.env` file in the root of the project and add your Firebase configuration:
+
+```env
+VITE_FIREBASE_API_KEY=your_key
+VITE_FIREBASE_AUTH_DOMAIN=your_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+```
+
+> These values can be obtained from your Firebase project settings.
+
+### 5. Start the development server
+
+```bash
+npm run dev
+```
+
+### 6. Open in browser
+
+The app will be available at:
+
+`http://localhost:5173`
+
 ## Video for Week 5 Checkpoint
 
 [Video for Week 5 Checkpoint](https://www.youtube.com/watch?v=7-F7fzZgQK8)
