@@ -122,6 +122,7 @@ The app will be available at:
 [Video for Week 5 Checkpoint](https://www.youtube.com/watch?v=7-F7fzZgQK8)
 
 ---
+
 ## Project Board
 
 You can view our project board here:
@@ -129,10 +130,12 @@ You can view our project board here:
 [ https://our-board-link.com](https://github.com/dzzuze/SAA-Cat/issues?q=is%3Aissue%20state%3Aclosed)
 
 ### Board Screenshot
+
 <img width="1244" height="1225" alt="Screenshot 2026-04-06 at 10 29 11" src="https://github.com/user-attachments/assets/72c56608-5ab8-499b-80d5-11204b496607" />
 
 ---
-##  Project Structure
+
+## Project Structure
 
 ```bash
 src/
@@ -262,17 +265,17 @@ src/
 ├── main.tsx                         # App entry point
 └── vite-env.d.ts
 ```
-##  Best Pull Requests
+
+## Best Pull Requests
 
 Here are some of the most meaningful pull requests in the project, each with substantial implementation and constructive code review:
 
 - [Feat/btn-component](https://github.com/dzzuze/SAA-Cat/pull/32)) - Introduced a reusable button component (`ButtonLoading`) and improved form behavior by ensuring proper button types to prevent unintended submissions. Also refined naming conventions (PascalCase) and aligned styling practices. This PR improves consistency, reusability, and overall UX in form interactions.
-- [Feat/extend firebase auth features](https://github.com/dzzuze/SAA-Cat/pull/36)) —  Added password reset functionality, integrated toast notifications for user feedback, and introduced a testing setup using Vitest and React Testing Library. This PR improves authentication UX and establishes a foundation for reliable testing and future feature development.
+- [Feat/extend firebase auth features](https://github.com/dzzuze/SAA-Cat/pull/36)) — Added password reset functionality, integrated toast notifications for user feedback, and introduced a testing setup using Vitest and React Testing Library. This PR improves authentication UX and establishes a foundation for reliable testing and future feature development.
 - [Implement Main Page (Landing Page)](https://github.com/dzzuze/SAA-Cat/pull/38) — Implemented the landing page with key sections (Hero, How It Works, Topics) using reusable components and clear structure. This PR establishes the first user entry point, improves UX, and lays the foundation for navigation and future feature expansion.
 - [Implement Dark/Light Theme + UI Refactor](https://github.com/dzzuze/SAA-Cat/pull/64) — Introduced a full theming system with light/dark mode, system preference support, and persistent settings, along with a comprehensive UI refactor to replace hardcoded styles with semantic design tokens. This PR significantly improves consistency, accessibility, and maintainability across the entire application.
 
 Each of these PRs includes meaningful discussion, review feedback, and decisions that helped improve the quality of the project.
-
 
 ---
 
