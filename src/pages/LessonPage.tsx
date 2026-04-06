@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import MarkdownRenderer from "../components/ui/MarkdownRenderer";
-import getLessonById from "../lib/firebase/getLessonById";
-import markLessonCompleted from "../lib/firebase/markLessonCompleted";
-import type { Lesson } from "../types/lesson";
-import { useAuth } from "../auth/useAuth";
-import getLessonsByTopicId from "../lib/firebase/getLessonsByTopicId";
 import { doc, getDoc } from "firebase/firestore";
+
+import MarkdownRenderer from "../components/ui/MarkdownRenderer";
+import { useAuth } from "../auth/useAuth";
+import getLessonById from "../lib/firebase/getLessonById";
+import getLessonsByTopicId from "../lib/firebase/getLessonsByTopicId";
+import markLessonCompleted from "../lib/firebase/markLessonCompleted";
 import { db } from "../lib/firebase/firebase";
+
+import type { Lesson } from "../types/lesson";
 
 export default function LessonPage() {
   const { topicId, lessonId } = useParams<{
@@ -107,8 +109,8 @@ export default function LessonPage() {
 
   if (loading) {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center">
-        Loading lesson...
+      <div className="flex min-h-[60vh] items-center justify-center bg-app text-text-primary transition-colors duration-300">
+        <p className="text-text-muted">Loading lesson...</p>
       </div>
     );
   }
@@ -119,7 +121,7 @@ export default function LessonPage() {
 
   if (error && !lesson) {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center text-red-500">
+      <div className="flex min-h-[60vh] items-center justify-center bg-app text-red-500 transition-colors duration-300">
         {error}
       </div>
     );
@@ -135,20 +137,20 @@ export default function LessonPage() {
     currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : null;
 
   return (
-    <section className="px-4 py-10 mt-8 md:py-14">
+    <section className="mt-8 bg-app px-4 py-10 text-text-primary transition-colors duration-300 md:py-14">
       <div className="mx-auto max-w-3xl">
         <Link
           to={`/learn/${topicId}`}
-          className="mb-6 inline-block text-sm font-medium text-emerald-600 hover:text-emerald-700"
+          className="mb-6 inline-block text-sm font-medium text-main-yellow transition-opacity hover:opacity-80"
         >
           ← Back to lessons
         </Link>
 
-        <h1 className="mb-8 text-4xl font-bold text-slate-900">
+        <h1 className="mb-8 text-4xl font-bold text-text-primary">
           {lesson.title}
         </h1>
 
-        <article className="rounded-3xl bg-white p-6 shadow-sm">
+        <article className="rounded-3xl border border-border-soft bg-surface p-6 shadow-sm sm:p-8">
           <MarkdownRenderer content={lesson.content} />
         </article>
 
@@ -157,7 +159,7 @@ export default function LessonPage() {
             type="button"
             onClick={handleComplete}
             disabled={isCompleting || isCompleted}
-            className="rounded-2xl bg-emerald-600 px-6 py-3 font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-60"
+            className="rounded-2xl bg-main-yellow px-6 py-3 font-semibold text-main-dark transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {isCompleted
               ? "Completed"
@@ -170,14 +172,14 @@ export default function LessonPage() {
             {prevLesson ? (
               <Link
                 to={`/learn/${topicId}/lessons/${prevLesson.id}`}
-                className="rounded-2xl border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-100"
+                className="rounded-2xl border border-border-soft bg-surface px-6 py-3 font-semibold text-text-primary transition hover:bg-surface-muted"
               >
                 ← Back
               </Link>
             ) : (
               <Link
                 to={`/learn/${topicId}`}
-                className="rounded-2xl border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-100"
+                className="rounded-2xl border border-border-soft bg-surface px-6 py-3 font-semibold text-text-primary transition hover:bg-surface-muted"
               >
                 ← Back
               </Link>
@@ -189,10 +191,10 @@ export default function LessonPage() {
                 onClick={(e) => {
                   if (!isCompleted) e.preventDefault();
                 }}
-                className={`rounded-2xl px-6 py-3 font-semibold text-white transition ${
+                className={`rounded-2xl px-6 py-3 font-semibold transition ${
                   isCompleted
-                    ? "bg-emerald-600 hover:bg-emerald-700"
-                    : "cursor-not-allowed bg-gray-300"
+                    ? "bg-main-yellow text-main-dark hover:opacity-90"
+                    : "cursor-not-allowed bg-surface-muted text-text-muted"
                 }`}
               >
                 Go on →
@@ -205,8 +207,8 @@ export default function LessonPage() {
                 }}
                 className={`rounded-2xl px-6 py-3 font-semibold transition ${
                   isCompleted
-                    ? "bg-emerald-600 text-white hover:bg-emerald-700"
-                    : "cursor-not-allowed bg-gray-300 text-gray-500"
+                    ? "bg-main-yellow text-main-dark hover:opacity-90"
+                    : "cursor-not-allowed bg-surface-muted text-text-muted"
                 }`}
               >
                 Go on →

@@ -79,8 +79,8 @@ export default function LessonsPage() {
 
   if (loading) {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center px-4">
-        <p className="text-sm text-slate-500">Loading lessons...</p>
+      <div className="flex min-h-[60vh] items-center justify-center bg-app px-4 text-text-primary transition-colors duration-300">
+        <p className="text-sm text-text-muted">Loading lessons...</p>
       </div>
     );
   }
@@ -91,7 +91,7 @@ export default function LessonsPage() {
 
   if (error) {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center px-4">
+      <div className="flex min-h-[60vh] items-center justify-center bg-app px-4 text-text-primary transition-colors duration-300">
         <p className="text-sm text-red-500">{error}</p>
       </div>
     );
@@ -119,26 +119,26 @@ export default function LessonsPage() {
   };
 
   return (
-    <section className="flex-1 mt-8 px-4 py-10 md:py-14">
+    <section className="mt-8 flex-1 bg-app px-4 py-10 text-text-primary transition-colors duration-300 md:py-14">
       <div className="mx-auto max-w-4xl">
         <Link
           to="/"
-          className="mb-6 inline-block text-sm font-medium text-emerald-600 transition hover:text-emerald-700"
+          className="mb-6 inline-block text-sm font-medium text-main-yellow transition-opacity hover:opacity-80"
         >
           ← Back
         </Link>
 
         <header className="mb-10">
-          <h1 className="mb-3 text-4xl font-bold text-slate-900">
+          <h1 className="mb-3 text-4xl font-bold text-text-primary">
             {topic.title}
           </h1>
-          <p className="text-sm font-medium text-slate-500">
+          <p className="text-sm font-medium text-text-muted">
             Difficulty: {topic.difficulty}
           </p>
         </header>
 
         {lessons.length === 0 ? (
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 text-slate-600 shadow-sm">
+          <div className="rounded-2xl border border-border-soft bg-surface p-6 text-text-muted shadow-sm">
             No lessons yet.
           </div>
         ) : (
@@ -151,20 +151,20 @@ export default function LessonsPage() {
                 return (
                   <div
                     key={lesson.id}
-                    className="cursor-not-allowed rounded-2xl border border-slate-200 bg-slate-100 p-5 opacity-60"
+                    className="cursor-not-allowed rounded-2xl border border-border-soft bg-surface-muted p-5 opacity-70"
                   >
                     <div className="flex items-center justify-between gap-4">
                       <div>
-                        <p className="mb-1 text-sm text-slate-500">
+                        <p className="mb-1 text-sm text-text-muted">
                           Lesson {index + 1}
                         </p>
 
-                        <h2 className="text-xl font-semibold text-slate-700">
+                        <h2 className="text-xl font-semibold text-text-muted">
                           {lesson.title}
                         </h2>
                       </div>
 
-                      <span className="text-sm font-medium text-slate-500">
+                      <span className="text-sm font-medium text-text-muted">
                         Locked
                       </span>
                     </div>
@@ -176,20 +176,20 @@ export default function LessonsPage() {
                 <Link
                   key={lesson.id}
                   to={`/learn/${topicId}/lessons/${lesson.id}`}
-                  className="block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                  className="block rounded-2xl border border-border-soft bg-surface p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-main-yellow hover:shadow-md"
                 >
                   <div className="flex items-center justify-between gap-4">
                     <div>
-                      <p className="mb-1 text-sm text-slate-500">
+                      <p className="mb-1 text-sm text-text-muted">
                         Lesson {index + 1}
                       </p>
 
-                      <h2 className="text-xl font-semibold text-slate-900">
+                      <h2 className="text-xl font-semibold text-text-primary">
                         {lesson.title}
                       </h2>
                     </div>
 
-                    <span className="text-sm font-medium text-emerald-600">
+                    <span className="text-sm font-medium text-main-yellow">
                       {completedLesson ? "Completed" : "Open →"}
                     </span>
                   </div>

@@ -1,10 +1,79 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-main-yellow: var(--color-yellow-400);
   --color-main-dark: #3d3d3d;
+
+  --color-app-bg: #fffdf5;
+  --color-app-surface: #ffffff;
+  --color-app-surface-muted: #fff7db;
+  --color-app-text: #2b2b2b;
+  --color-app-text-muted: #5f5f5f;
+  --color-app-border: #e8dcc0;
+
+  --color-app-bg-dark: #171717;
+  --color-app-surface-dark: #232323;
+  --color-app-surface-muted-dark: #2d2d2d;
+  --color-app-text-dark: #f7f4ea;
+  --color-app-text-muted-dark: #c9c3b4;
+  --color-app-border-dark: #3d3d3d;
+
+  --animate-gradient: gradient-move 4s ease infinite;
+
+  @keyframes gradient-move {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+}
+
+:root {
+  --app-bg: var(--color-app-bg);
+  --app-surface: var(--color-app-surface);
+  --app-surface-muted: var(--color-app-surface-muted);
+  --app-text: var(--color-app-text);
+  --app-text-muted: var(--color-app-text-muted);
+  --app-border: var(--color-app-border);
+}
+
+/* dark mode */
+.dark {
+  --app-bg: var(--color-app-bg-dark);
+  --app-surface: var(--color-app-surface-dark);
+  --app-surface-muted: var(--color-app-surface-muted-dark);
+  --app-text: var(--color-app-text-dark);
+  --app-text-muted: var(--color-app-text-muted-dark);
+  --app-border: var(--color-app-border-dark);
+}
+
+@theme inline {
+  --color-app: var(--app-bg);
+  --color-surface: var(--app-surface);
+  --color-surface-muted: var(--app-surface-muted);
+  --color-text-primary: var(--app-text);
+  --color-text-muted: var(--app-text-muted);
+  --color-border-soft: var(--app-border);
 }
 
 @layer base {
+  html {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-app text-text-primary transition-colors duration-300;
+  }
+
   ::-webkit-scrollbar {
     width: 0px;
     background: transparent;

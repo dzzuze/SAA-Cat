@@ -70,7 +70,7 @@ export default function TopicPage() {
   }
 
   return (
-    <section className="px-4 py-10 md:py-14">
+    <section className="flex-1 px-4 py-10 md:py-14">
       <div className="mx-auto max-w-3xl">
         {topic.imageUrl ? (
           <img
@@ -80,8 +80,8 @@ export default function TopicPage() {
           />
         ) : null}
 
-        <header className="mb-8">
-          <h1 className="mb-3 text-4xl font-bold tracking-tight text-slate-900">
+        <header className=" mt-8 mb-8">
+          <h1 className="mb-3 text-4xl font-bold tracking-tight text-main-yellow">
             {topic.title}
           </h1>
 

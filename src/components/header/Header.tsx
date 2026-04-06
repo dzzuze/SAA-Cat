@@ -9,7 +9,7 @@ import WatchingCat from "../../assets/watching-cat.svg?react";
 import HeaderBrand from "./HeaderBrand";
 import HeaderUserMenu from "./HeaderUserMenu";
 import HeaderNavLinks from "./HeaderNavLinks";
-import HeaderMobileMenu from "./HeaderMobileMenu";
+import { ThemeSwitcher } from "../ui/ThemeSwitcher";
 
 import { authedLinks, baseLinks, guestLinks } from "./headerLinks";
 
@@ -17,13 +17,11 @@ export default function Header() {
   const { user, loading } = useAuth();
   const isAuthed = Boolean(user?.uid);
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
   const userMenuRef = useRef<HTMLDivElement | null>(null);
 
   const closeAll = () => {
-    setIsMenuOpen(false);
     setIsUserMenuOpen(false);
   };
 
@@ -51,22 +49,9 @@ export default function Header() {
     };
   }, []);
 
-  useEffect(() => {
-    const onResize = () => {
-      if (window.innerWidth >= 768) setIsMenuOpen(false);
-    };
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
-
   const showAuthedUI = !loading && isAuthed;
 
   const desktopLinks = useMemo(() => {
-    if (loading) return baseLinks;
-    return isAuthed ? [...authedLinks] : [...baseLinks, ...guestLinks];
-  }, [loading, isAuthed]);
-
-  const mobileLinks = useMemo(() => {
     if (loading) return baseLinks;
     return isAuthed
       ? [...baseLinks, ...authedLinks]
@@ -74,15 +59,19 @@ export default function Header() {
   }, [loading, isAuthed]);
 
   return (
-    <nav className="fixed top-0 z-20 w-full bg-[#3d3d3d]">
+    <nav className="fixed top-0 z-20 w-full border-b border-border-soft bg-surface text-text-primary transition-colors duration-300">
       <div className="mx-auto flex flex-wrap justify-between px-4 py-0">
-        <HeaderBrand onNavigate={closeAll} />
-
+        <div className="flex items-center gap-5">
+          <HeaderBrand onNavigate={closeAll} />
+          <div className="mt-1">
+            <ThemeSwitcher />
+          </div>
+        </div>
         <div className="flex items-center gap-3 md:order-2">
           {showAuthedUI && user && (
             <HeaderUserMenu
               user={user}
-              links={authedLinks}
+              links={[...baseLinks, ...authedLinks]}
               isOpen={isUserMenuOpen}
               setIsOpen={setIsUserMenuOpen}
               onLogout={handleLogout}
@@ -91,39 +80,15 @@ export default function Header() {
           )}
 
           {loading && (
-            <div className="text-sm font-medium text-gray-700">Loading…</div>
+            <div className="text-sm font-medium text-text-muted">Loading…</div>
           )}
-
-          <button
-            type="button"
-            onClick={() => setIsMenuOpen((v) => !v)}
-            aria-controls="navbar"
-            aria-expanded={isMenuOpen}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md transition hover:bg-yellow-200 focus:outline-none focus:ring-2 focus:ring-yellow-300 md:hidden"
-          >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="h-6 w-6"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeWidth="2"
-                d="M5 7h14M5 12h14M5 17h14"
-              />
-            </svg>
-          </button>
         </div>
 
         <div className="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto">
           <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 md:flex">
             <HeaderNavLinks
               links={desktopLinks}
-              className="flex items-center gap-8 font-medium"
+              className="flex items-center gap-4 md:gap-3 lg:gap-6 font-medium"
             />
           </div>
 
@@ -131,14 +96,8 @@ export default function Header() {
             <WatchingCat className="h-18 w-18" aria-hidden />
           </div>
         </div>
+        <div className="absolute right-2 top-1/2 -translate-y-1/2 md:right-35"></div>
       </div>
-      <HeaderMobileMenu
-        isOpen={isMenuOpen}
-        onClose={() => setIsMenuOpen(false)}
-        links={mobileLinks}
-        isAuthed={isAuthed}
-        onLogout={handleLogout}
-      />
     </nav>
   );
 }
