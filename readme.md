@@ -129,8 +129,8 @@ You can view our project board here:
 [ https://your-board-link.com](https://github.com/dzzuze/SAA-Cat/issues?q=is%3Aissue%20state%3Aclosed)
 
 ### Board Screenshot
+<img width="1244" height="1225" alt="Screenshot 2026-04-06 at 10 29 11" src="https://github.com/user-attachments/assets/72c56608-5ab8-499b-80d5-11204b496607" />
 
-![Project Board Screenshot](<img width="1244" height="1225" alt="Screenshot 2026-04-06 at 10 29 11" src="https://github.com/user-attachments/assets/470634cf-b57a-46fb-8d77-5fc0eba9ee2a" />)
 
 _Learning can be serious and cute at the same time._
 
