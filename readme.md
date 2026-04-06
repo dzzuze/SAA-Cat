@@ -298,6 +298,11 @@ Each of these PRs includes meaningful discussion, review feedback, and decisions
 -  [Meeting — 2026-03-30](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%238.md)
 
 ---
+
+Checkpoint week 7
+https://youtu.be/uDiuYctqrG4
+
+---
 _Learning can be serious and cute at the same time._
 
 ---
