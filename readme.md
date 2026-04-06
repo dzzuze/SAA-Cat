@@ -132,6 +132,136 @@ You can view our project board here:
 <img width="1244" height="1225" alt="Screenshot 2026-04-06 at 10 29 11" src="https://github.com/user-attachments/assets/72c56608-5ab8-499b-80d5-11204b496607" />
 
 ---
+##  Project Structure
+
+```bash
+src/
+├── app/                             # Application entry & routing
+│   ├── App.tsx
+│   └── router.tsx
+
+├── assets/                          # Static assets (images, SVGs)
+
+├── auth/                            # Authentication logic (Firebase)
+│   ├── AuthProvider.tsx
+│   ├── useAuth.ts
+│   ├── login.ts
+│   ├── register.ts
+│   ├── resetPassword.ts
+│   ├── updateUserData.ts
+│   └── getUserData.ts
+
+
+├── components/
+│   ├── button/                      # Button-related components
+│   │   └── ButtonLoading.tsx
+│   │
+│   ├── footer/
+│   │   └── Footer.tsx
+│   │
+│   ├── header/                      # Header & navigation
+│   │   ├── Header.tsx
+│   │   ├── HeaderBrand.tsx
+│   │   ├── HeaderNavLinks.tsx
+│   │   ├── HeaderMobileMenu.tsx
+│   │   ├── HeaderUserMenu.tsx
+│   │   ├── headerLinks.ts
+│   │   └── Header.test.tsx
+│   │
+│   ├── quiz/                        # Quiz-related UI
+│   │   └── QuizSection.tsx
+│   │
+│   ├── ui/                          # Reusable UI components
+│   │   ├── Button.tsx
+│   │   ├── MarkdownRenderer.tsx
+│   │   └── ThemeSwitcher.tsx
+│   │
+│   └── user/
+│       └── CompletedLessonsCard.tsx
+
+├── data/                            # Static/local data
+
+├── helpers/                         # Helper functions
+│   ├── getFirebaseErrorMessage.ts
+│   └── getFirebaseErrorMessage.test.ts
+
+├── layouts/                         # Layout architecture (routing guards)
+│   ├── RootLayout.tsx
+│   ├── AuthGateLayout.tsx
+│   ├── ProtectedLayout.tsx
+│   └── GuestOnlyLayout.tsx
+
+├── lib/
+│   ├── firebase/                    # Firebase integration layer
+│   │   ├── config.ts
+│   │   ├── firebase.ts
+│   │   ├── getTopics.ts
+│   │   ├── getTopicById.ts
+│   │   ├── getLessonsByTopicId.ts
+│   │   ├── getLessonById.ts
+│   │   ├── lessonsProgress.ts
+│   │   ├── markLessonCompleted.ts
+│   │   └── quizzes.ts
+│   │
+│   └── toast/                       # Toast notifications
+│       └── ToastProvider.tsx
+
+├── pages/                           # Application pages
+│   ├── main/
+│   │   ├── components/              # Main page sections
+│   │   │   ├── HeroSection.tsx
+│   │   │   ├── HowItWorksSection.tsx
+│   │   │   ├── TopicsSection.tsx
+│   │   │   ├── TopicCard.tsx
+│   │   │   └── QuizPromoSection.tsx
+│   │   │
+│   │   ├── config/
+│   │   │   └── topicsImages.ts
+│   │   │
+│   │   ├── data/
+│   │   │   └── mainPageData.ts
+│   │   │
+│   │   └── MainPage.tsx
+│   │
+│   ├── AboutPage.tsx
+│   ├── Dashboard.tsx
+│   ├── LessonsPage.tsx
+│   ├── LessonPage.tsx
+│   ├── TopicPage.tsx
+│   ├── QuizPage.tsx
+│   ├── LoginPage.tsx
+│   ├── RegisterPage.tsx
+│   ├── ResetPasswordPage.tsx
+│   ├── UserPage.tsx
+│   └── NotFound.tsx
+
+├── providers/                       # Global providers
+│   ├── theme-context.ts
+│   └── ThemeProvider.tsx
+
+├── store/                           # State management (Zustand)
+│   └── authStore.ts
+
+├── styles/                          # Global styles
+│   └── index.css
+
+├── test/                            # Test setup
+│   └── setup.ts
+
+├── types/                           # TypeScript types
+│   ├── lesson.ts
+│   ├── quiz.ts
+│   ├── topic.ts
+│   └── user.ts
+
+├── __tests__/                       # Unit tests
+│   ├── LoginPage.test.tsx
+│   ├── ResetPasswordPage.test.tsx
+│   └── NotFound.test.tsx
+
+├── main.tsx                         # App entry point
+└── vite-env.d.ts
+```
 ##  Best Pull Requests
 
 Here are some of the most meaningful pull requests in the project, each with substantial implementation and constructive code review:
