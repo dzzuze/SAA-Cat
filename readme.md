@@ -299,7 +299,7 @@ Each of these PRs includes meaningful discussion, review feedback, and decisions
 
 ---
 
-Checkpoint week 7
+## Checkpoint week 7
 https://youtu.be/uDiuYctqrG4
 
 ---
