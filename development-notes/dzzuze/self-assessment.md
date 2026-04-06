@@ -1,6 +1,6 @@
 # Self-Assessment
 
-**PR with self-assessment:** (link)
+**PR with self-assessment:** [(link)](https://github.com/dzzuze/SAA-Cat/pull/71)
 
 ## Deploy
 
