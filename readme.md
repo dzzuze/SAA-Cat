@@ -278,6 +278,12 @@ Here are some of the most meaningful pull requests in the project, each with sub
 Each of these PRs includes meaningful discussion, review feedback, and decisions that helped improve the quality of the project.
 
 ---
+## Development Notes & Self-Assessment
+
+- Sergey (sidoryakasergey): [notes] (https://github.com/dzzuze/SAA-Cat/tree/main/development-notes/SidoryakaSergey) | [self-assessment] (https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/SidoryakaSergey/self-assessment.md) 
+- Anna (AnnaDzig):          [notes] (https://github.com/dzzuze/SAA-Cat/tree/main/development-notes/AnnaDzig)| [self-assessment](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/AnnaDzig/self-assessment.md)   
+- Artem (dzzuze):           [notes] (https://github.com/dzzuze/SAA-Cat/tree/main/development-notes/dzzuze)| [self-assessment] (https://github.com/dzzuze/SAA-Cat/tree/main/development-notes/dzzuze/self-assessment.md)  
+---
 
 ## Meeting Notes
 
@@ -290,7 +296,7 @@ Each of these PRs includes meaningful discussion, review feedback, and decisions
 -  [Meeting — 2026-03-28](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%237.md)
 -  [Meeting — 2026-03-30](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%238.md)
 
-
+---
 _Learning can be serious and cute at the same time._
 
 ---
