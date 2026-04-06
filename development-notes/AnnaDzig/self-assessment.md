@@ -2,38 +2,38 @@
 
 **PR with self-assessment:** _PR_LINK_
 
-##  Deploy
+## Deploy
 
 https://dzzuze.github.io/SAA-Cat/
 
 ---
 
-##  Personal Features Score
+## Personal Features Score
 
-| Category            | Feature / Description                                                                 | PR / Code Link | Points |
-|---------------------|----------------------------------------------------------------------------------------|----------------|--------|
-| Frameworks          | React (SPA built with React + Vite)                                                   |                | +5     |
-| Architecture        | State Manager (Zustand used via auth/global state)                                    |                | +10    |
-| Architecture        | API Layer (separation of Firebase logic from UI via helpers)                          |                | +10    |
-| Architecture        | Design Patterns (modular structure, config-driven UI, separation of concerns)         |                | +10    |
-| Backend & Data      | BaaS Auth (Firebase Auth integration via AuthProvider)                                |                | +15    |
-| Backend & Data      | BaaS CRUD (reading/writing lessons + quiz + progress from Firestore)                  |                | +15    |
-| UI & Interaction    | Theme Switcher (dark/light/system with persistence)                                   |                | +10    |
-| UI & Interaction    | Responsive layout (Landing, Lessons, Quiz)                                            |                | +5     |
-| Quality             | Unit Tests (Header tests with Vitest + RTL)                                           |                | +10    |
-| My Components       | Rich UI Screen: Landing Page (Hero, How It Works, Topics)                             |                | +20    |
-| My Components       | Rich UI Screen: LessonsPage (lesson list + ordering + navigation entry)               |                | +20    |
-| My Components       | Rich UI Screen: LessonPage (Markdown + completion + navigation logic)                 |                | +20    |
-| My Components       | Rich UI Screen: Profile Page (progress grouping + UI refactor)                        |                | +20    |
-| My Components       | Rich UI Screen: QuizPage (questions, navigation, score, result screen)                |                | +20    |
-| My Components       | Complex Component: Lessons Flow (routing + Firebase sync + navigation logic)          |                | +25    |
-| My Components       | Complex Component: Quiz System (state, scoring, Firebase data flow)                   |                | +25    |
+| Category         | Feature / Description                                                         | PR / Code Link | Points |
+| ---------------- | ----------------------------------------------------------------------------- | -------------- | ------ |
+| Frameworks       | React (SPA built with React + Vite)                                           |                | +5     |
+| Architecture     | State Manager (Zustand used via auth/global state)                            |                | +10    |
+| Architecture     | API Layer (separation of Firebase logic from UI via helpers)                  |                | +10    |
+| Architecture     | Design Patterns (modular structure, config-driven UI, separation of concerns) |                | +10    |
+| Backend & Data   | BaaS Auth (Firebase Auth integration via AuthProvider)                        |                | +15    |
+| Backend & Data   | BaaS CRUD (reading/writing lessons + quiz + progress from Firestore)          |                | +15    |
+| UI & Interaction | Theme Switcher (dark/light/system with persistence)                           |                | +10    |
+| UI & Interaction | Responsive layout (Landing, Lessons, Quiz)                                    |                | +5     |
+| Quality          | Unit Tests (Header tests with Vitest + RTL)                                   |                | +10    |
+| My Components    | Rich UI Screen: Landing Page (Hero, How It Works, Topics)                     |                | +20    |
+| My Components    | Rich UI Screen: LessonsPage (lesson list + ordering + navigation entry)       |                | +20    |
+| My Components    | Rich UI Screen: LessonPage (Markdown + completion + navigation logic)         |                | +20    |
+| My Components    | Rich UI Screen: Profile Page (progress grouping + UI refactor)                |                | +20    |
+| My Components    | Rich UI Screen: QuizPage (questions, navigation, score, result screen)        |                | +20    |
+| My Components    | Complex Component: Lessons Flow (routing + Firebase sync + navigation logic)  |                | +25    |
+| My Components    | Complex Component: Quiz System (state, scoring, Firebase data flow)           |                | +25    |
 
 | **Total** | **240+ (capped to 250)** |
 
 ---
 
-##  Description of My Work
+## Description of My Work
 
 During this project I was mainly responsible for the frontend architecture and user experience.
 
@@ -44,6 +44,7 @@ After that I worked on the Main Page. Before writing code, I created the layout 
 The biggest part of my work was implementing the learning flow. Initially, topics and lessons were mixed together, which made navigation complicated. I analyzed the problem and proposed separating dashboard logic from learning flow. This led to creating LessonsPage and LessonPage.
 
 I implemented:
+
 - lesson ordering
 - navigation between lessons
 - completion logic
@@ -60,11 +61,12 @@ Overall, I focused on building a structured, scalable frontend while avoiding ov
 
 ---
 
-##  My 2 Main Feature Components
+## My 2 Main Feature Components
 
-###  1. Lessons Flow (LessonsPage + LessonPage)
+### 1. Lessons Flow (LessonsPage + LessonPage)
 
 **What it does:**
+
 - Displays lessons inside a topic
 - Controls navigation between lessons
 - Tracks completion state
@@ -72,6 +74,7 @@ Overall, I focused on building a structured, scalable frontend while avoiding ov
 - Restores progress on reload
 
 **Why it is complex:**
+
 - Combines routing, UI, and backend
 - Requires synchronization with Firebase
 - Needs stable navigation logic
@@ -79,9 +82,10 @@ Overall, I focused on building a structured, scalable frontend while avoiding ov
 
 ---
 
-###  2. Quiz System (QuizPage + Firebase integration)
+### 2. Quiz System (QuizPage + Firebase integration)
 
 **What it does:**
+
 - Loads quiz data from Firebase
 - Displays questions with navigation
 - Handles answer selection
@@ -90,6 +94,7 @@ Overall, I focused on building a structured, scalable frontend while avoiding ov
 - Supports restart
 
 **Why it is complex:**
+
 - Requires state management across multiple steps
 - Works with dynamic data from Firebase
 - Includes scoring logic and UI states
@@ -97,9 +102,10 @@ Overall, I focused on building a structured, scalable frontend while avoiding ov
 
 ---
 
-##  Challenges and How I Solved Them
+## Challenges and How I Solved Them
 
 ### Routing complexity
+
 Routing became complicated after adding authentication.
 
 → Refactored to layout-based routing.
@@ -107,6 +113,7 @@ Routing became complicated after adding authentication.
 ---
 
 ### Lessons structure
+
 Topics and lessons were mixed.
 
 → Separated them and introduced new route structure.
@@ -114,6 +121,7 @@ Topics and lessons were mixed.
 ---
 
 ### Progress persistence
+
 Progress was not restored after reload.
 
 → Stored progress in Firebase and restored it on load.
@@ -121,6 +129,7 @@ Progress was not restored after reload.
 ---
 
 ### Firebase data structure (Quiz)
+
 Needed scalable structure for quizzes.
 
 → Split quizzes and questions into separate collections.
@@ -128,13 +137,14 @@ Needed scalable structure for quizzes.
 ---
 
 ### UI consistency
+
 Initial UI looked inconsistent.
 
 → Refactored layout, grouping, and spacing.
 
 ---
 
-##  What I Learned
+## What I Learned
 
 - How to design frontend architecture
 - How to connect routing with application logic
@@ -146,7 +156,7 @@ Also gained experience working in a team with changing requirements and communic
 
 ---
 
-##  What I Would Improve
+## What I Would Improve
 
 - Define data structure earlier
 - Align architecture decisions earlier in the team
@@ -155,7 +165,7 @@ Also gained experience working in a team with changing requirements and communic
 
 ---
 
-##  Conclusion
+## Conclusion
 
 My main contribution:
 
