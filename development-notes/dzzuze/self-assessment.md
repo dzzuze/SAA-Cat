@@ -8,19 +8,19 @@ https://dzzuze.github.io/SAA-Cat/
 
 ## Personal Features Score
 
-| Категория          | Фича                                                                             | Баллы |
-| ------------------ | -------------------------------------------------------------------------------- | ----- |
-| **My Components**  | **Rich UI Screen:** LoginPage                                                    | +20   |
-|                    | **Rich UI Screen:** RegisterPAge                                                 | +20   |
-|                    | **Rich UI Screen:** Header                                                       | +20   |
-| **Architecture**   | **State Manager** Zustand used via auth/global state                             | +10   |
-| **Architecture**   | **API Layer:** separation of Firebase logic from UI via helpers                  | +10   |
-| **Architecture**   | **Design Patterns:** modular structure, config-driven UI, separation of concerns | +10   |
-| **Backend & Data** | **BaaS Auth:** Firebase Auth integration via AuthProvider                        | +15   |
-| **Backend & Data** | **BaaS CRUD:** reading/writing lessons + quiz + progress from Firestore          | +15   |
-| **Quality**        | **Unit Tests (Basic):** Покрытие тестами 20%+ вашего личного кода                | +10   |
-| **DevOps & Role**  | **Auto-deploy:** GH Actions                                                      | +5    |
-| **Frameworks**     | **React:** Использование библиотеки React                                        | +5    |
+| Категория          | Фича                                                                             | PR Link                                         | Баллы |
+| ------------------ | -------------------------------------------------------------------------------- | ----------------------------------------------- | ----- |
+| **My Components**  | **Rich UI Screen:** LoginPage                                                    | [PR](https://github.com/dzzuze/SAA-Cat/pull/10) | +20   |
+|                    | **Rich UI Screen:** RegisterPAge                                                 | [PR](https://github.com/dzzuze/SAA-Cat/pull/32) | +20   |
+|                    | **Rich UI Screen:** Header                                                       | [PR](https://github.com/dzzuze/SAA-Cat/pull/26) | +20   |
+| **Architecture**   | **State Manager** Zustand used via auth/global state                             | [PR](https://github.com/dzzuze/SAA-Cat/pull/58) | +10   |
+| **Architecture**   | **API Layer:** separation of Firebase logic from UI via helpers                  | [PR](https://github.com/dzzuze/SAA-Cat/pull/26) | +10   |
+| **Architecture**   | **Design Patterns:** modular structure, config-driven UI, separation of concerns | [PR](https://github.com/dzzuze/SAA-Cat/pull/32) | +10   |
+| **Backend & Data** | **BaaS Auth:** Firebase Auth integration via AuthProvider                        | [PR](https://github.com/dzzuze/SAA-Cat/pull/58) | +15   |
+| **Backend & Data** | **BaaS CRUD:** reading/writing lessons + quiz + progress from Firestore          |
+| **Quality**        | **Unit Tests (Basic):** Покрытие тестами 20%+ вашего личного кода                | [PR](https://github.com/dzzuze/SAA-Cat/pull/41) | +10   |
+| **DevOps & Role**  | **Auto-deploy:** GH Actions                                                      |                                                 | +5    |
+| **Frameworks**     | **React:** Использование библиотеки React                                        | [PR](https://github.com/dzzuze/SAA-Cat/pull/58) | +5    |
 
 | **Total** | **140+** |
 
