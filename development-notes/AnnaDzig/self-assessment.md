@@ -18,7 +18,7 @@ https://dzzuze.github.io/SAA-Cat/
 | Architecture     | Design Patterns (modular structure, config-driven UI, separation of concerns) |                | +10    |
 | Backend & Data   | BaaS Auth (Firebase Auth integration via AuthProvider)                        |                | +15    |
 | Backend & Data   | BaaS CRUD (reading/writing lessons + quiz + progress from Firestore)          |                | +15    |
-| UI & Interaction | Theme Switcher (dark/light/system with persistence)                           | https://github.com/dzzuze/SAA-Cat/pull/64|                | +10    |
+| UI & Interaction | Theme Switcher (dark/light/system with persistence)                           | https://github.com/dzzuze/SAA-Cat/pull/64                 | +10    |
 | UI & Interaction | Responsive layout (Landing, Lessons, Quiz)                                    |                | +5     |
 | Quality          | Unit Tests (Header tests with Vitest + RTL)                                   |                | +10    |
 | My Components    | Rich UI Screen: Landing Page (Hero, How It Works, Topics)                     | https://github.com/dzzuze/SAA-Cat/pull/38                 | +20    |
