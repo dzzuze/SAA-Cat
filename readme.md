@@ -278,7 +278,8 @@ Here are some of the most meaningful pull requests in the project, each with sub
 Each of these PRs includes meaningful discussion, review feedback, and decisions that helped improve the quality of the project.
 
 ---
-##  Development Notes & Self-Assessment
+
+## Development Notes & Self-Assessment
 
 - Sergey (sidoryakasergey): [notes](https://github.com/dzzuze/SAA-Cat/tree/main/development-notes/SidoryakaSergey) | [self-assessment](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/SidoryakaSergey/self-assessment.md)
 - Anna (AnnaDzig): [notes](https://github.com/dzzuze/SAA-Cat/tree/main/development-notes/AnnaDzig) | [self-assessment](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/AnnaDzig/self-assessment.md)
@@ -288,21 +289,23 @@ Each of these PRs includes meaningful discussion, review feedback, and decisions
 
 ## Meeting Notes
 
--  [Meeting — 2026-02-16](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%231.md)
--  [Meeting — 2026-02-18 ](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%232.md)
--  [Meeting — 2026-02-28 ](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%233.md)
--  [Meeting — 2026-03-06](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%234.md)
--  [Meeting — 2026-03-20](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%235.md)
--  [Meeting — 2026-03-24](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%236.md)
--  [Meeting — 2026-03-28](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%237.md)
--  [Meeting — 2026-03-30](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%238.md)
+- [Meeting — 2026-02-16](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%231.md)
+- [Meeting — 2026-02-18 ](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%232.md)
+- [Meeting — 2026-02-28 ](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%233.md)
+- [Meeting — 2026-03-06](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%234.md)
+- [Meeting — 2026-03-20](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%235.md)
+- [Meeting — 2026-03-24](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%236.md)
+- [Meeting — 2026-03-28](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%237.md)
+- [Meeting — 2026-03-30](https://github.com/dzzuze/SAA-Cat/blob/main/development-notes/meetings/%238.md)
 
 ---
 
 ## Checkpoint week 7
+
 https://youtu.be/uDiuYctqrG4
 
 ---
+
 _Learning can be serious and cute at the same time._
 
 ---

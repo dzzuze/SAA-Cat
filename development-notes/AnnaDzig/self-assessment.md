@@ -10,24 +10,25 @@ https://dzzuze.github.io/SAA-Cat/
 
 ## Personal Features Score
 
-| Category         | Feature / Description                                                         | PR / Code Link | Points |
-| ---------------- | ----------------------------------------------------------------------------- | -------------- | ------ |
-| Frameworks       | React (SPA built with React + Vite)                                           |                | +5     |
-| Architecture     | State Manager (Zustand used via auth/global state)                            |                | +10    |
-| Architecture     | API Layer (separation of Firebase logic from UI via helpers)                  |                | +10    |
-| Architecture     | Design Patterns (modular structure, config-driven UI, separation of concerns) |                | +10    |
-| Backend & Data   | BaaS Auth (Firebase Auth integration via AuthProvider)                        |                | +15    |
-| Backend & Data   | BaaS CRUD (reading/writing lessons + quiz + progress from Firestore)          |                | +15    |
-| UI & Interaction | Theme Switcher (dark/light/system with persistence)                           |                | +10    |
-| UI & Interaction | Responsive layout (Landing, Lessons, Quiz)                                    |                | +5     |
-| Quality          | Unit Tests (Header tests with Vitest + RTL)                                   |                | +10    |
-| My Components    | Rich UI Screen: Landing Page (Hero, How It Works, Topics)                     |                | +20    |
-| My Components    | Rich UI Screen: LessonsPage (lesson list + ordering + navigation entry)       |                | +20    |
-| My Components    | Rich UI Screen: LessonPage (Markdown + completion + navigation logic)         |                | +20    |
-| My Components    | Rich UI Screen: Profile Page (progress grouping + UI refactor)                |                | +20    |
-| My Components    | Rich UI Screen: QuizPage (questions, navigation, score, result screen)        |                | +20    |
-| My Components    | Complex Component: Lessons Flow (routing + Firebase sync + navigation logic)  |                | +25    |
-| My Components    | Complex Component: Quiz System (state, scoring, Firebase data flow)           |                | +25    |
+| Category         | Feature / Description                                                                 | PR / Code Link                            | Points |
+|------------------|----------------------------------------------------------------------------------------|--------------------------------------------|--------|
+| Frameworks       | React (SPA built with React + Vite)                                                   |                                            | +5     |
+| Architecture     | State Manager (Zustand used via auth/global state)                                    |                                            | +10    |
+| Architecture     | API Layer (separation of Firebase logic from UI via helpers)                          |                                            | +10    |
+| Architecture     | Design Patterns (modular structure, config-driven UI, separation of concerns)         | https://github.com/dzzuze/SAA-Cat/pull/20  | +10    |
+| Architecture     | Routing Architecture (layout-based routing with `<Outlet />`)                         | https://github.com/dzzuze/SAA-Cat/pull/20  | +10    |
+| Backend & Data   | BaaS Auth (Firebase Auth integration via AuthProvider)                                |                                            | +15    |
+| Backend & Data   | BaaS CRUD (reading/writing lessons + quiz + progress from Firestore)                  |                                            | +15    |
+| UI & Interaction | Theme Switcher (dark/light/system with persistence)                                   | https://github.com/dzzuze/SAA-Cat/pull/64  | +10    |
+| UI & Interaction | Responsive layout (Landing, Lessons, Quiz)                                            |                                            | +5     |
+| Quality          | Unit Tests (Header tests with Vitest + RTL)                                           | https://github.com/dzzuze/SAA-Cat/pull/46  | +10    |
+| My Components    | Rich UI Screen: Landing Page (Hero, How It Works, Topics)                             | https://github.com/dzzuze/SAA-Cat/pull/38  | +20    |
+| My Components    | Rich UI Screen: LessonsPage (lesson list + ordering + navigation entry)               | https://github.com/dzzuze/SAA-Cat/pull/61  | +20    |
+| My Components    | Rich UI Screen: LessonPage (Markdown + completion + navigation logic)                 | https://github.com/dzzuze/SAA-Cat/pull/62  | +20    |
+| My Components    | Rich UI Screen: Profile Page (progress grouping + UI refactor)                        | https://github.com/dzzuze/SAA-Cat/pull/63  | +20    |
+| My Components    | Rich UI Screen: QuizPage (questions, navigation, score, result screen)                | https://github.com/dzzuze/SAA-Cat/pull/67  | +20    |
+| My Components    | Complex Component: Lessons Flow (routing + Firebase sync + navigation logic)          | https://github.com/dzzuze/SAA-Cat/pull/61  | +25    |
+| My Components    | Complex Component: Quiz System (state, scoring, Firebase data flow)                   | https://github.com/dzzuze/SAA-Cat/pull/67  | +25    |
 
 | **Total** | **240+ (capped to 250)** |
 
