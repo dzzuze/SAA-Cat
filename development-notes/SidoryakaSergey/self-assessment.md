@@ -6,23 +6,23 @@
 
 ## 📊 Personal Features Score
 
-| Category         | Feature / Description                                                    | PR / Code Link | Points |
-| ---------------- | ------------------------------------------------------------------------ | -------------- | ------ |
-| Frameworks       | React (Vite + React setup проекта)                                       |                | +5     |
-| Architecture     | State Manager (Zustand для хранения auth и user данных)                  |                | +10    |
-| Backend & Data   | BaaS Auth (Firebase Authentication: login, register, session handling)   |                | +15    |
-| Backend & Data   | BaaS CRUD (Firestore: создание user, топики, получение данных)           |                | +15    |
-| UI & Interaction | Responsive + базовая структура UI (Header, страницы)                     |                | +5     |
-| My Components    | Rich UI Screen: Dashboard (список топиков + фильтры сложности)           |                | +20    |
-| My Components    | Rich UI Screen: Profile Page (редактирование данных пользователя)        |                | +20    |
-| My Components    | Rich UI Screen: Topic Page (динамический роутинг + загрузка данных)      |                | +20    |
-| My Components    | Complex Component: Markdown Renderer (react-markdown + syntax highlight) |                | +25    |
-| UI & Interaction | Advanced UI Logic (фильтрация топиков по сложности)                      |                | +10    |
-| Quality          | Unit Tests (Vitest + RTL, базовые тесты страниц)                         |                | +10    |
-| UI & Interaction | Toast Notifications (react-hot-toast)                                    |                | +5     |
-| Backend & Data   | Backend Framework usage (Firebase SDK как backend layer)                 |                | +10    |
-| Architecture     | API Layer (функции работы с Firestore, изоляция от UI)                   |                | +10    |
-| DevOps & Role    | Git Hooks (Husky + commitlint + lint-staged)                             |                | +5     |
+| Category         | Feature / Description                                                    | PR / Code Link                                                                                   | Points |
+| ---------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------ |
+| Frameworks       | React (Vite + React setup проекта)                                       | [PR](https://github.com/dzzuze/SAA-Cat/pull/1)                                                   | +5     |
+| Architecture     | State Manager (Zustand для хранения auth и user данных)                  | [PR](https://github.com/dzzuze/SAA-Cat/pull/21)                                                  | +10    |
+| Backend & Data   | BaaS Auth (Firebase Authentication: login, register, session handling)   | [PR](https://github.com/dzzuze/SAA-Cat/pull/12)                                                  | +15    |
+| Backend & Data   | BaaS CRUD (Firestore: создание user, топики, получение данных)           | [PR](https://github.com/dzzuze/SAA-Cat/pull/52)                                                  | +15    |
+| UI & Interaction | Responsive + базовая структура UI (Header, страницы)                     | [PR](https://github.com/dzzuze/SAA-Cat/pull/48)                                                  | +5     |
+| My Components    | Rich UI Screen: Dashboard (список топиков + фильтры сложности)           | [PR](https://github.com/dzzuze/SAA-Cat/pull/59)                                                  | +20    |
+| My Components    | Rich UI Screen: Profile Page (редактирование данных пользователя)        | [PR](https://github.com/dzzuze/SAA-Cat/pull/52)                                                  | +20    |
+| My Components    | Rich UI Screen: Topic Page (динамический роутинг + загрузка данных)      | [PR](https://github.com/dzzuze/SAA-Cat/pull/55)                                                  | +20    |
+| My Components    | Complex Component: Markdown Renderer (react-markdown + syntax highlight) | [PR](https://github.com/dzzuze/SAA-Cat/pull/55)                                                  | +25    |
+| UI & Interaction | Advanced UI Logic (фильтрация топиков по сложности)                      | [PR](https://github.com/dzzuze/SAA-Cat/pull/59)                                                  | +10    |
+| Quality          | Unit Tests (Vitest + RTL, базовые тесты страниц)                         | [PR](https://github.com/dzzuze/SAA-Cat/pull/36), [PR](https://github.com/dzzuze/SAA-Cat/pull/35) | +10    |
+| UI & Interaction | Toast Notifications (react-hot-toast)                                    | [PR](https://github.com/dzzuze/SAA-Cat/pull/36)                                                  | +5     |
+| Backend & Data   | Backend Framework usage (Firebase SDK как backend layer)                 | [PR](https://github.com/dzzuze/SAA-Cat/pull/55)                                                  | +10    |
+| Architecture     | API Layer (функции работы с Firestore, изоляция от UI)                   | [PR](https://github.com/dzzuze/SAA-Cat/pull/55)                                                  | +10    |
+| DevOps & Role    | Git Hooks (Husky + commitlint + lint-staged)                             | [PR](https://github.com/dzzuze/SAA-Cat/pull/1)                                                   | +5     |
 
 | **Total** | **185+** |
 
