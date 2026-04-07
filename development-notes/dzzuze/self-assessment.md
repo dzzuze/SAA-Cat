@@ -8,20 +8,19 @@ https://dzzuze.github.io/SAA-Cat/
 
 ## Personal Features Score
 
-| Категория            | Фича                                                                                                                   | Баллы         |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------- |
-| **My Components**    | **Rich UI Screen:** LoginPage                                                                                          | +20           |
-|                      | **Rich UI Screen:** RegisterPAge                                                                                       | +20           |
-|                      | **Rich UI Screen:** Header                                                                                             | +20           |
-| **Architecture**     | **State Manager** Zustand used via auth/global state                                                                   | +10           |
-| **Architecture**     | **API Layer:** separation of Firebase logic from UI via helpers                                                        | +10           |
-| **Architecture**     | **Design Patterns:** modular structure, config-driven UI, separation of concerns                                       | +10           |
-| **Backend & Data**   | **BaaS Auth:** Firebase Auth integration via AuthProvider                                                              | +15           |
-| **Backend & Data**   | **BaaS CRUD:** reading/writing lessons + quiz + progress from Firestore                                                | +15           |
-| **Quality**          | **Unit Tests (Basic):** Покрытие тестами 20%+ вашего личного кода                                                      | +10           |
-| **DevOps & Role**    | **Auto-deploy:** GH Actions                                                                                            | +5            |
-| **Frameworks**       | **React:** Использование библиотеки React                                                                              | +5            |
-
+| Категория          | Фича                                                                             | Баллы |
+| ------------------ | -------------------------------------------------------------------------------- | ----- |
+| **My Components**  | **Rich UI Screen:** LoginPage                                                    | +20   |
+|                    | **Rich UI Screen:** RegisterPAge                                                 | +20   |
+|                    | **Rich UI Screen:** Header                                                       | +20   |
+| **Architecture**   | **State Manager** Zustand used via auth/global state                             | +10   |
+| **Architecture**   | **API Layer:** separation of Firebase logic from UI via helpers                  | +10   |
+| **Architecture**   | **Design Patterns:** modular structure, config-driven UI, separation of concerns | +10   |
+| **Backend & Data** | **BaaS Auth:** Firebase Auth integration via AuthProvider                        | +15   |
+| **Backend & Data** | **BaaS CRUD:** reading/writing lessons + quiz + progress from Firestore          | +15   |
+| **Quality**        | **Unit Tests (Basic):** Покрытие тестами 20%+ вашего личного кода                | +10   |
+| **DevOps & Role**  | **Auto-deploy:** GH Actions                                                      | +5    |
+| **Frameworks**     | **React:** Использование библиотеки React                                        | +5    |
 
 | **Total** | **140+** |
 
@@ -119,8 +118,8 @@ Code review и разрешение конфликтов
 
 В основном, это работе в команде, в хорошей и приятной команде :)
 Это мой первый подобный опыт, очень ценный для меня опыт, много было "бытовых" проблем, но тем ни менее, мы вроде справились :)
-Многое было в новинку, особенно React, "бек", приходилось постоянно разбираться, даже если не я писал код, 
-что-то успел запомнить, а что-то ещё нет, тем ни менее, в дальнейшем буду повторять "пройденные уроки" и изучать что-то новое. 
+Многое было в новинку, особенно React, "бек", приходилось постоянно разбираться, даже если не я писал код,
+что-то успел запомнить, а что-то ещё нет, тем ни менее, в дальнейшем буду повторять "пройденные уроки" и изучать что-то новое.
 
 ### Чтобы улучшил
 
