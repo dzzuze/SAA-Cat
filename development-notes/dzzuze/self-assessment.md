@@ -16,7 +16,7 @@ https://dzzuze.github.io/SAA-Cat/
 | **DevOps & Role**  | **Auto-deploy:** GH Actions                                                      |                                                 | +5    |
 | **Frameworks**     | **React:** Использование библиотеки React                                        |                                                 | +5    |
 
-| **Total** | **60+** |
+**Total:** **60+** 
 
 ## Описание моей работы
 
