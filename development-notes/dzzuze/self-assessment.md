@@ -10,9 +10,9 @@ https://dzzuze.github.io/SAA-Cat/
 
 | Категория          | Фича                                                                             | PR Link                                         | Баллы |
 | ------------------ | -------------------------------------------------------------------------------- | ----------------------------------------------- | ----- |
-| **My Components**  | **Rich UI Screen:** UI-design                                                    | [51](https://github.com/dzzuze/SAA-Cat/pull/51) | +20   |
-|                    | **Rich UI Screen:** Tailwind                                                     | [29](https://github.com/dzzuze/SAA-Cat/pull/29) | +20   |
-| **Quality**        | **Unit Tests (Basic):** Покрытие тестами 20%+ вашего личного кода                | [41](https://github.com/dzzuze/SAA-Cat/pull/41) | +10   |
+| **My Components**  | **Rich UI Screen:** UI-design                                                    | [#51](https://github.com/dzzuze/SAA-Cat/pull/51) | +20   |
+|                    | **Rich UI Screen:** Tailwind                                                     | [#29](https://github.com/dzzuze/SAA-Cat/pull/29) | +20   |
+| **Quality**        | **Unit Tests (Basic):** Покрытие тестами 20%+ вашего личного кода                | [#41](https://github.com/dzzuze/SAA-Cat/pull/41) | +10   |
 | **DevOps & Role**  | **Auto-deploy:** GH Actions                                                      |                                                 | +5    |
 | **Frameworks**     | **React:** Использование библиотеки React                                        |                                                 | +5    |
 
