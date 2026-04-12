@@ -66,21 +66,21 @@ export default function Header() {
           </div>
         </div>
         <div className="flex items-center gap-3 md:order-2">
-  {!loading && (
-    <HeaderUserMenu
-      user={user}
-      links={isAuthed ? [...baseLinks, ...authedLinks] : guestLinks}
-      isOpen={isUserMenuOpen}
-      setIsOpen={setIsUserMenuOpen}
-      onLogout={isAuthed ? handleLogout : undefined}
-      menuRef={userMenuRef}
-    />
-  )}
+          {!loading && (
+            <HeaderUserMenu
+              user={user}
+              links={isAuthed ? [...baseLinks, ...authedLinks] : guestLinks}
+              isOpen={isUserMenuOpen}
+              setIsOpen={setIsUserMenuOpen}
+              onLogout={isAuthed ? handleLogout : undefined}
+              menuRef={userMenuRef}
+            />
+          )}
 
-  {loading && (
-    <div className="text-sm font-medium text-text-muted">Loading…</div>
-  )}
-</div>
+          {loading && (
+            <div className="text-sm font-medium text-text-muted">Loading…</div>
+          )}
+        </div>
 
         <div className="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto">
           <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 md:flex">
