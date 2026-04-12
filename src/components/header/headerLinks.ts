@@ -10,7 +10,7 @@ export const baseLinks: HeaderLink[] = [
 ];
 
 export const guestLinks: HeaderLink[] = [
-  { to: "/login", label: "Login" },
+  { to: "/login", label: "Sign In" },
   { to: "/register", label: "Sign Up" },
 ];
 
