@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
 
 import { registerUser } from "../auth/register";
@@ -129,6 +129,15 @@ export default function RegisterPage() {
             {loading ? "Registration..." : "Register"}
           </button>
         </form>
+        <div className="mt-6 text-center text-sm text-text-muted">
+          Already have an account?{" "}
+          <Link
+            to="/login"
+            className="text-main-yellow transition-opacity hover:opacity-80"
+          >
+            Sign in
+          </Link>
+        </div>
       </div>
     </div>
   );

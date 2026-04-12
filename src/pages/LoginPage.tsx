@@ -123,6 +123,15 @@ export default function LoginPage() {
             Meow!
           </Link>
         </div>
+        <div className="mt-4 text-center text-sm text-text-muted">
+          Don&apos;t have an account?{" "}
+          <Link
+            to="/register"
+            className="text-main-yellow transition-opacity hover:opacity-80"
+          >
+            Register
+          </Link>
+        </div>
       </div>
     </div>
   );
